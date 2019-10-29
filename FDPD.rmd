@@ -33,10 +33,10 @@ library(entropart)
 name:FDPD-title
 class: left, middle
 
-# Functional diversity and phylogenetic diveristy
+# Functional diversity and phylogenetic diversity
 
 <img src="https://cdn-images-1.medium.com/max/800/1*3O597Dv2NGbNzg_dWRu2Hw.png"
-alt="phylo" width="180" /> 
+alt="phylo" width="180" />
 
 Masatoshi Katabuchi | katabuchi@xtbg.ac.cn | AFEC-X 2010::XTBG | 2019-10-30
 
@@ -51,9 +51,9 @@ class: middle, inverse
 .large[
 We Learn:
 
-- What trait and phylogenetic diveristy are
-- Why we use trait and phylogenetic diveristy
-- How to calculate trait and phylogenetic diveristy
+- What trait and phylogenetic diversity are
+- Why we use trait and phylogenetic diversity
+- How to calculate trait and phylogenetic diversity
 - Trait-based approaches
 
 ]
@@ -65,19 +65,19 @@ We Learn:
 
 .pull-left[
 
-- Communiey assemby
+- Community assembly
 
 - Diversity measures
-    - First-Order properties of Single Communites
-    - First-Order properties of Multiple Communites
-    - Second-Order properties with site charactersitics
-    - Second-Order properties with species traits
+    - First-Order Properties of Single Communities
+    - First-Order Properties of Multiple Communities
+    - Second-Order Properties with Site Characteristics
+    - Second-Order Properties with Species Traits
 
 - Phylogenetic measures
     - Genus:species ratio
-    - Phylogeneteic diveristy
+    - Phylogenetic diversity
     - Community phylogeny
-    - (Funcitonal diveresity)
+    - (Functional diversity)
     - Phylogenetic signal
 ]
 
@@ -88,26 +88,52 @@ We Learn:
     - Phylogenetic middleman problem
     - Convex hull (multiple trait)
     - Single trait patterns
-    - Compettitive hierachy
+    - Competitive hierarchy
 ]
 
 
 ---
 
-# Community Assembly and Species Coexsistence
+# Community Assembly and Species Coexistence
 
-
-
-
----
-name: first-order-single
-class: middle
-
-# How to qunatify Ecological communities `r emo::ji("leaf")`
+For over a century, filed ecologist have been characterizing patterns in ecological communities and trying to draw theoretical inferences form the resulting data.
 
 --
 
-## 1a) First-Order properties of Single Communites
+## Central Questions:
+
+- Why do species occurs at the particular places?
+
+--
+
+- Why do some pairs of species coexist while others not?
+
+--
+
+## Predictions:
+
+- **Environmental filtering**: Ecologically similar species should coexist in ecologically similar environments.
+
+--
+
+- **Limiting similarity**: Ecologically dissimilar species should coexist because too similar species competing for the same resources cannot stably coexist.
+
+---
+
+class: middle
+
+# How can we quantify ecological similarity of coexisting species?
+
+---
+
+name: first-order-single
+class: middle
+
+# How to quantify ecological communities `r emo::ji("leaf")`
+
+--
+
+## 1a) First-order properties of single communities
 
 --
 
@@ -129,40 +155,34 @@ ab1 %>%
 
 .pull-right[
 - Species richness = 4
-- Simpson's eveness = 1/ Σfreq_i^2^ = (4/383)^2 + (300/383)^2 + (56/383)2 + (23/383)^2^
-- Species abundance distribution
+]
 
+--
+
+.pull-right[
+- Simpson's evenness = 1/ Σfreq<sub>i</sub><sup>2</sup> = (4/383)<sup>2</sup> + (300/383)<sup>2</sup> + (56/383)<sup>2</sup> + (23/383)<sup>2</sup>
+]
+
+--
+
+.pull-right[
 ```{r, echo = F, fig.retina = 3, fig.height = 3}
 ggplot(ab1 %>% as.data.frame, aes(x = rank(-ab1), y = ab1)) +
   geom_point() +
   geom_line() +
   theme_light() +
   xlab("Species rank") +
-  ylab("Abundance rank")
+  ylab("Abundance rank") +
+  ggtitle("Species abundance distribution")
 
 ```
-
 ]
-
-
-
---
-
-```{r, echo = F}
-ab1 <- c(4, 300, 56, 23) %>% as.matrix
-rownames(ab1) <- paste0("Sp", 1:4)
-colnames(ab1) <- "Site1"
-ab1
-```
-]
-
-
 
 ---
 
 name: first-order-multi
 
-## 1b) First-Order properties of Multiple Communites (Beta diversity)
+## 1b) First-order properties of multiple communities (Beta diversity)
 
 --
 
@@ -183,8 +203,10 @@ ab %>%
 ```
 ]
 
+--
+
 .pull-right[
-- Disimilarity matrix
+- Dissimilarity matrix
 
 ```{r, echo = F}
 library(vegan)
@@ -197,10 +219,20 @@ vegdist(t(ab), method = "bray") %>%
 ```
 ]
 
+.pull-right[
+Bray–Curtis dissimilarity
+
+$BC_{ij}=1-2\frac{\sum min\left(S_{A,i}\mbox{, } S_{B,i}\right)}{\sum S_{A,i}+\sum S_{B,i}}$
+
+
+Site 1 vs Site2:  1 - (2 * (0 + 250 + 56 + 18) / (4 +300 + 56 + 23 + 0 + 250 + 120 + 18)) = 0.16
+
+]
+
 ---
 name: second-order-env
 
-## 2a) Second-Order properties with site chracteristics (1950s ~)
+## 2a) Second-Order properties with site characteristics (1950s ~)
 
 .pull-left[
 
@@ -222,26 +254,31 @@ rbind(ab, env) %>%
 ]
 
 .pull-right[
-
-- Trait diversity / trait composition
-
+- Species $\times$ site and site $\times$ environment
 ]
+
+--
+
+.pull-right[
+- Diversity-environment relationships
+]
+
+--
+
+.pull-right[
+- Composition-environment relationships
+    - Multivariate ordination: placing the survey plots "in order" based on their multivariate species composition.
+]
+
 
 ---
 name: second-order-trait
 
-## 2b) Second-Order properties with species chracteristics (2000s ~)
+## 2b) Second-Order properties with species characteristics (2000s ~)
 
 .pull-left[
 
 ```{r, echo = F}
-
-env <- cbind(c(10, 0.01, 90, 12),
-            c(1, 0.4, 92, 0.1),
-            c(7, 0.2, 95, 0),
-            c(16, 0.5, 97, 5))
-rownames(env) <- paste("Site characteristic", 1:4)
-colnames(env) <- paste("Site", 1:4)
 
 rbind(ab, env) %>%
   knitr::kable(format = "html") %>%
@@ -267,84 +304,94 @@ colnames(trait) <- paste("Trait", 1:4)
 trait %>%
   knitr::kable(format = "html")
 ```
-- Trait diversity / trait composition
-
 ]
 
+--
 
----
+.pull-right[
+- Trait $\times$ species, species $\times$ site, site $\times$ environment
+]
 
-# Species coexitence
+--
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Graph_of_competitive_exclusion_principle.jpg" width="80%"/>
+.pull-right[
+- Trait diversity and composition
+]
 
+--
 
-
-.footnote[
-[1] Gause, G.F. (1932)
+.pull-right[
+- Trait composition-environment relationships
 ]
 
 ---
 
-- a12 x a21 < 1
-- K1 and K2 are not too different
 
----
+# How to measure species characteristics?
 
-# How to measure species characteristcs?
-
-.left-colmun[
+.left-column[
 
 Photosynthetic rates
 
-<img src="https://www.licor.com/env/products/photosynthesis/LI-6800/images/li6800-hero3.png" width="40%"/>
+<img src="https://www.licor.com/env/products/photosynthesis/LI-6800/images/li6800-hero3.png" width="100%"/>
 ]
 
-.right-colmun[
+--
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/BorneoRainforest_DSC_9267.JPG/1200px-BorneoRainforest_DSC_9267.JPG" width="40%"/>
+.right-column[
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/BorneoRainforest_DSC_9267.JPG/1200px-BorneoRainforest_DSC_9267.JPG" width="100%"/>
 
 ]
 
 
 ---
 
-# Genus:species ratio: Relatedness as a ssubstitute for ecological similarity
+# Assuming closely related species are more ecologically similar
 
-## Assuming closely related species are more ecologicaly similar
+## Genus:species ratio: Relatedness as a substitute for ecological similarity
 
 --
 
-- A high genus:species ratio indicates distantly related and ecolgically
+Community with 3 genus and 3 species (3:3) vs community with 1 genus and 3 species (1:3)
+
+--
+
+- A high genus:species ratio indicates distantly related and ecologically
   dissimilar species coexist.
 
-    - species competition
+    - Limiting similarity
 
 --
 
-- A low genus:species ratio indicates closely related and ecolgically
+- A low genus:species ratio indicates closely related and ecologically
   similar species coexist.
 
-    - filtering
-
+    - Environmental filtering
 
 ---
 
-# Genus-species ratio
+# Genus:species ratio
+
+.footnote[
+[1] Swenson, N. G. The assembly of tropical tree communities - the advances and shortcomings of phylogenetic and functional trait analyses. Ecography 36, 264–276 (2013).
+]
 
 - The genus:species ratio type of study in plant community ecology started ~1910
   and was popular until 1990's
 
-- A large criticism of genus:speices ratio analyeses is that they do not take
-  acount for the defferent ages of genera and species
+--
+
+- A large criticism of genus:speices ratio analyses is that they do not take
+  acount for the different ages of genera and species
     - Two species in a relatively young genus may be expected to be more similar than two species in a relatively old genus.
 
-.footnote[
-[1] Swenson 2013 Ecography
-]
 
 ---
 
+class:middle, center
+
+# Solution for the genus:spcies ratio problem = Use phylogenetic trees
 
 ```{r, echo = F}
 
@@ -364,31 +411,10 @@ t0 <- aa %>%
   dist %>%
   hclust
 
-#t0 <- aa %>%
-#  dist %>%
-#  hclust
-#
-#Ps <- rep(c(0,1), each=3) / 3
-#
-#Ps <- rep(1, 6) /6
-#names(Ps) <- paste0("sp", 1:6)
-#
-##PDFD(moge, t)
-##PDFD(moge, t0)
-#Lengths <- t$edge.length
-#  # Get unnormalized probabilities p(b)
-#ltips <- sapply(t$edge[, 2], function(node) geiger::tips(t, node))
-#Branches <- unlist(lapply(ltips, function(VectorOfTips) sum(Ps[VectorOfTips])))
-#  # Calculate Tbar but do not normalize l(b)
-#Tbar <- sum(Lengths*Branches)
-#
-#sum(Ps[ltips[[1]]])
-
 plot(t,
    show.tip.label = FALSE,
    direction = "downward",
    main = "Phylogeny")
-
 
 ```
 
@@ -396,27 +422,35 @@ plot(t,
 
 # Phylodiversity
 
-- In the 1990's cnservation biologists recognized the *biodiversity* is not only
-  species diveristy
+.footnote[
+[1] Dimensions of Biodiversity: National Science Fundation
+]
 
-    - Biodiversity has several axes or dimensions including genetic, funcitonal
-      and pyhogenetic diveristy
+.pull-left[
+![div-dim](./img/div-dim.png)
+]
 
+.pull-right[
+- In the 1990's conservation biologists recognized the *biodiversity* is not only species diversity
+
+    - Biodiversity has several axes or dimensions including genetic, taxonomic, phylogenetic and functional diversity
+]
 
 ---
 
 # Phylodiversity
 
-- Phylognetic diveristy was first formalized by Dan Faith in 1992
-
-    - He proposed a metic called PD that is also commonly referred to as Faith's
-      Index
-    - Many additional metics have now bee generated but this metic is still
-      widely used
-
 .footnote[
 [1] Faith D.P. (1992) Conservation evaluation and phylogenetic diversity. Biological Conservation, 61, 1-10.
 ]
+
+- Phylogenetic diversity was first formalized by Dan Faith in 1992
+
+    - He proposed a metic called PD that is also commonly referred to as Faith's
+      Index
+    - Many additional metics have now been generated but this metic is still
+      widely used, especially in the context of conservation
+
 ---
 
 # Faith's Index (PD)
@@ -430,15 +464,8 @@ total_pd <- pd(my_samp, t)[1,1]
 
 ```
 
+
 .pull-left[
-
-- $PD = \Sigma l_i$ where $l_i$ is the branch length of species i
-
-- Total branch length = `r total_pd`
-
-]
-
-.pull-right[
 
 ```{r, echo = FALSE, fig.retina = 3}
 
@@ -454,7 +481,28 @@ edgelabels(t$edge.length,
            font = 2)
 
 ```
+]
 
+.pull-right[
+- PD is the sum of the lengths of all those branches that are members of the corresponding minimum spanning path
+]
+
+--
+
+.pull-right[
+- PD is the phylogenetic analogue of taxon richness and is expressed as the number of tree units which are found in a sample
+]
+
+--
+
+.pull-right[
+- PD will correlate with species richness
+]
+
+--
+
+.pull-right[
+- Total branch length = `r total_pd`
 ]
 
 ---
@@ -468,13 +516,13 @@ my_samp1[, 4:6] <- 0
 pd1 <- pd(my_samp1, t)[1,1]
 ```
 
-.pull-left[
+.pull-right[
 - Total branch length = `r pd1`
 
 ]
 
 
-.pull-right[
+.pull-left[
 
 ```{r, echo = FALSE, fig.retina = 3}
 
@@ -511,12 +559,12 @@ my_samp2[, c(2, 4, 6)] <- 0
 pd2 <- pd(my_samp2, t)[1,1]
 ```
 
-.pull-left[
+.pull-right[
 - Total branch length = `r pd2`
 
 ]
 
-.pull-right[
+.pull-left[
 
 ```{r, echo = FALSE, fig.retina = 3}
 
@@ -596,58 +644,16 @@ dist_all
 ]
 
 ---
-
-class: middle
-
-<img src="./img/webb2000.png" width=80%>
-
----
-
-# Community phylogeny
-
-.pull-left[
-
-```{r, fig.width =4, fig.height=5}
-
-plot(t,
-   show.tip.label = FALSE,
-   direction = "rightwards",
-   main = "Community phylogeny")
-
-tiplabels(t$tip.label,
-          cex = 2,
-          frame = "none")
-
-```
-
-]
-
-
----
 name:mpd
 
 # Mean Pairwise Distance (MPD) and Net Related Index (NRI)
 
+.footnote[
+[1] $MPD = \frac{1}{n} \Sigma^n_i \Sigma^n_j \delta_{i,j} \; i \neq j$, where
+$\delta_{i, j}$ is the pairwised distance between species *i* and *j*
+]
 
 Greatest possible mean pairwise node distance for a community of 4 taxa = 22 /4 = 3.66 (for A, B, E, F)
-
-
-.pull-right[
-
-```{r}
-tmp <- rep(1, 6)
-names(tmp) <- LETTERS[1:6]
-dist_all <- tmp %>% dist
-dist_all[1:15] <- c(1, 2, 4, 5, 5,
-                    2, 4, 5, 5,
-                    3, 4, 4,
-                    2, 2,
-                    1)
-mat_all <- dist_all %>% as.matrix
-
-dist_all
-```
-]
 
 --
 
@@ -659,6 +665,7 @@ Community 1; A, B, C, D
 dist1 <- mat_all[LETTERS[1:4], LETTERS[1:4]] %>% as.dist
 dist1
 ```
+
 
 Mean pairwise nodal distance (**MPD**) = (1 + 2 + 2 + 4 + 4 + 3) / 6 = 2.66
 
@@ -685,9 +692,13 @@ Net Related Index (**NRI**) = 1 - (3.66 / 3.66) = 0
 
 
 ---
-name:nttd
+name:mntd
 
 # Mean Nearest Nodal Distance (MNTD) and Nearest Taxa Index (NTI)
+
+.footnote[
+[1] $MNTD = \frac{1}{n} \Sigma^n_i min \delta_{i,j} \; i \neq j$, where $min \delta_{i, j}$ is the minimum distance between species *i* and all other species in the community.
+]
 
 Greatest possible nearest nodel distance for a community of 4 taxa = 2 (for A, B, E, F)
 
@@ -731,6 +742,8 @@ Net Related Index (**NRI**) = 1 - (1 / 2.0) = 0.5
 ---
 
 # Sparks community phylogeny
+
+![test](./img/spark.png)
 
 ---
 
@@ -963,7 +976,7 @@ class: middle
 ]
 
 .pull-right[
-- Phylogeny as a proxy for the functional or ecological similarity of species. 
+- Phylogeny as a proxy for the functional or ecological similarity of species.
 ]
 
 --
@@ -1009,7 +1022,7 @@ class: middle
 
 .right-column[
 - Is trait volume of California woody-plant communities significantly less than expected by chance?
-    - Environmental filtering 
+    - Environmental filtering
 ]
 
 ---
@@ -1111,7 +1124,7 @@ class:center
 
 ## Limiting similarity
 
-Competitive interaction strengths between species will increase with decreasing niche distance, measured as their absolute traits distance $|t_A - t_B|$ 
+Competitive interaction strengths between species will increase with decreasing niche distance, measured as their absolute traits distance $|t_A - t_B|$
 
 ]
 
@@ -1144,6 +1157,3 @@ Competitive effect of species A on species B will increase with increasing $t_A 
 ]
 
 ---
-
-
-
