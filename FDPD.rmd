@@ -786,8 +786,9 @@ name:Losos1
 
 .pull-right[
 
+- We are assuming that related species are ecologically similar
 
-- We are asuming that related specis are ecologically similar
+--
 
 - Related species can have very different traits
 
@@ -879,6 +880,41 @@ name:Losos2
 
 ---
 
+.footnote[
+[1] Swenson, N. G. The assembly of tropical tree communities - the advances and shortcomings of phylogenetic and functional trait analyses. Ecography 36, 264–276 (2013).
+]
+
+.pull-left[
+<img src="./img/phylo-trait.png", width="350">
+]
+
+.pull-right[
+- Phylogeny as a proxy for the functional or ecological similarity of species.
+]
+
+--
+
+.pull-right[
+- Measuring trait data and arraying it on the phylogenetic tree to demonstrate phylogenetic signal in function so that their phylogenetically-based inferences could be supported.
+]
+
+--
+
+.pull-right[
+- Compared to simply measuring the trait dispersion, this approach is very indirect.
+]
+
+--
+
+.pull-right[
+- This approach should be avoided! (phylogeny and traits are useful to make meaningful evolutionary inferences)
+]
+
+
+---
+
+
+
 # Leaf Economic Spectrum (LES)
 
 .right-column[
@@ -917,6 +953,24 @@ name:Losos2
 
 ---
 
+# Rebuilding community ecology from functional traits
+
+- Non-trait based statement
+
+   - *Campanula aparinoides* is found only in infertile habitats.
+
+--
+
+- Trait-based statement
+
+   - Compact plants with canopy area < 30 cm <sup>2</sup>  and small or absent leaves are restricted to marshes with < 18 $\mu$ g g <sup>-1</sup> soil P.
+
+.footnote[
+[1] McGill, B. J., Enquist, B. J., Weiher, E. & Westoby, M. Rebuilding community ecology from functional traits. Trends in Ecology and Evolution 21, 178–185 (2006).
+]
+
+---
+
 
 class: middle
 
@@ -925,7 +979,7 @@ class: middle
 ]
 
 
-# Rebuilding community ecology from functional traits - trait-based approach
+# Rebuilding community ecology from functional traits
 
 --
 
@@ -947,57 +1001,8 @@ class: middle
 
 - Go beyond 'How does space affect population dynamics?' to ask 'How do environmental gradients affect community structuring?'
 
----
-
-# Rebuilding community ecology from functional traits - trait-based approach
-
-- Non-trait based statement
-
-   - *Campanula aparinoides* is found only in infertile habitats.
-
-- Trait-based statement
-
-   - Compact plants with canopy area < 30 cm <sup>2</sup>  and small or absent leaves are restricted to marshes with < 18 $\mu$ g g <sup>-1</sup> soil P.
-
-.footnote[
-[1] McGill, B. J., Enquist, B. J., Weiher, E. & Westoby, M. Rebuilding community ecology from functional traits. Trends in Ecology and Evolution 21, 178–185 (2006).
-]
 
 ---
-
-.footnote[
-[1] Swenson, N. G. The assembly of tropical tree communities - the advances and shortcomings of phylogenetic and functional trait analyses. Ecography 36, 264–276 (2013).
-]
-
-.pull-left[
-<img src="./img/phylo-trait.png", width="350">
-]
-
-.pull-right[
-- Phylogeny as a proxy for the functional or ecological similarity of species.
-]
-
---
-
-.pull-right[
-- Measuring trait data and arraying it on the phylogenetic tree to demonstrate phylogenetic signal in function so that their phylogenetically-based inferences could be supported.
-]
-
---
-
-.pull-right[
-- Compared to simply measuring the trait dispersion, this approach is very indirect.
-]
-
---
-
-.pull-right[
-- This approach should be avoided! (phylogeny and traits are useful to make meaningful evolutionary inferences)
-]
-
-
----
-
 
 # Convex hull volume (functional richness)
 
@@ -1064,7 +1069,7 @@ class:center
 
 ---
 
-#  Enviormental filtering and limiting similarity can occur at the same time
+#  Environmental filtering and limiting similarity can occur at the same time
 
 .footnote[
 [1] Kraft, N. J. B., Valencia, R. & Ackerly, D. D. Functional Traits and Niche-Based Tree Community Assembly in an Amazonian Forest. Science 322, 580–582 (2008).
@@ -1075,7 +1080,7 @@ class:center
 ]
 
 .pull-right[
-- Yasuni topical tree communites, 25ha, 625 20m x 20m qudrats, 1089 species!
+- Yasuni topical tree communities, 25ha, 625 20m x 20m quadrats, 1089 species!
 ]
 
 --
@@ -1088,7 +1093,7 @@ class:center
 --
 
 .pull-right[
-- B: Seed masse shows broader distibution than expected
+- B: Seed masse shows broader distribution than expected
     - Limiting similarity
 ]
 
@@ -1096,7 +1101,7 @@ class:center
 
 .pull-right[
 - C: Range of SLA is smaller than expected  
-    - Enviormental filtering
+    - Environmental filtering
 ]
 
 --
@@ -1108,7 +1113,7 @@ class:center
 
 ---
 
-# Competitive hierachy
+# Competitive hierarchy
 
 .footnote[
 [1] $t_A$ and $t_B$ are the functional traits values of species A and B
@@ -1150,12 +1155,12 @@ Competitive effect of species A on species B will increase with increasing $t_A 
     biodiversity
 --
 
-- How to calculate trait and phylogenetic diversity?
+- Trait-based approaches
 
-  - I hope you remember it!
+  - They will make "ecology" more quantitative and predictive
 
 --
 
-- Trait-based approaches
+- How to calculate trait and phylogenetic diversity?
 
-  - They will make ecology studies more quantitative and predictive
+  - I hope you remember it!
