@@ -515,17 +515,9 @@ my_samp1[, 4:6] <- 0
 pd1 <- pd(my_samp1, t)[1,1]
 ```
 
-.pull-right[
-- Total branch length = `r pd1`
-
-]
-
-
 .pull-left[
 
 ```{r, echo = FALSE, fig.retina = 3}
-
-
 plot(t,
    show.tip.label = FALSE,
    direction = "rightwards")
@@ -543,8 +535,13 @@ tiplabels(
           cex = 4,
           col = NA,
           bg = rep(c("blue", NA), each = 3))
-
 ```
+]
+
+--
+
+.pull-right[
+- Total branch length = `r pd1`
 
 ]
 
@@ -558,15 +555,8 @@ my_samp2[, c(2, 4, 6)] <- 0
 pd2 <- pd(my_samp2, t)[1,1]
 ```
 
-.pull-right[
-- Total branch length = `r pd2`
-
-]
-
 .pull-left[
-
 ```{r, echo = FALSE, fig.retina = 3}
-
 plot(t,
    show.tip.label = FALSE,
    direction = "rightwards")
@@ -584,10 +574,16 @@ tiplabels(
           cex = 4,
           col = NA,
           bg = rep(c("blue", NA), 3))
-
 ```
-
 ]
+
+--
+
+.pull-right[
+- Total branch length = `r pd2`
+]
+
+
 
 ---
 
@@ -778,6 +774,11 @@ class:middle, center
 
 name:Losos1
 
+
+.footnote[
+[1] https://en.wikipedia.org/wiki/Anolis_ecomorphs
+]
+
 .pull-left[
 
 ![anole](./img/anole.jpg)
@@ -793,11 +794,6 @@ name:Losos1
 - Related species can have very different traits
 ]
 
-.footnote[
-
-[1] https://en.wikipedia.org/wiki/Anolis_ecomorphs
-
-]
 
 
 ---
@@ -1170,7 +1166,7 @@ Competitive effect of species A on species B will increase with increasing $t_A 
 
 ---
 
-# Summary
+# Summary `r emo::ji("beer")`
 
 
 - Why do we use trait and phylogenetic diversity?
