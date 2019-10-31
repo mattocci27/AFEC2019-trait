@@ -1,0 +1,316 @@
+---
+title: Diversity calculation
+author: Masatoshi Katabuchi
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output:
+#rmdformats::material
+  html_document:
+    fig_caption: yes
+    theme: spacelab #readable #sandstone #spacelab #flatly
+    highlight: pygments #tango #kate
+    toc: TRUE
+    toc_depth: 2
+    number_sections: TRUE
+    toc_float:
+      collapsed: TRUE
+      smooth_scroll: TRUE
+      toc: true
+---
+
+
+# Prerequisites
+
+Did you install `picante` and `FD`?
+
+```{r, eval = F}
+install.packages("picante")
+install.packages("FD")
+```
+
+It's better if you have those packages too.
+
+```{r, eval = F}
+install.packages("dplyr")
+install.packages("DT")
+install.packages("ggplot2")
+install.packages("rmarkdown")
+```
+
+
+
+```{r}
+library(picante)
+library(FD)
+library(dplyr)
+library(ggplot2)
+library(rmarkdown)
+```
+
+
+# Data
+
+## Community
+
+```{r}
+
+samp <- read_csv("./data/samp.csv")
+
+DT::datatable(samp)
+
+samp_mat <- as.matrix(samp[, -1])
+rownames(samp_mat) <- samp$Site
+
+samp_mat
+
+```
+
+
+## Phylogeny
+
+
+```{r, fig.height = 20}
+phylo <- read.tree("./data/phylo.tre")
+plot(phylo)
+```
+
+
+
+## Traits
+
+```{r}
+
+trait <- read_csv("./data/trait.csv") 
+
+# trait <- read.csv("./data/trait.csv") is fine too.
+
+DT::datatable(trait)
+```
+
+## Check the histograms of trait values first
+
+```{r}
+
+trait_long <- trait %>%
+  gather(trait, val, 2:7)
+
+ggplot(trait_long, aes(x = val)) +
+  geom_histogram(position = "identity") +
+  facet_wrap(~ trait, scale = "free")
+
+```
+
+
+Probably we can do log-transformation for leaf area, leaf thickness, leaf tissue
+density, and SLA
+
+```{r}
+
+trait2 <- trait %>%
+  mutate(logLA = log(LeafArea),
+         logLT = log(LeafThickness),
+         logLD = log(LeafTissueDens),
+         logSLA = log(SLA),
+         RDia = RootDiam,
+         RD = RootTissueDens) %>%
+  dplyr::select(Species, logLA, logLT, logLD, logSLA, RDia, RD)
+
+DT::datatable(trait2)
+
+```
+
+```{r}
+
+trait2 %>%
+  gather(trait, val, 2:7) %>%
+  ggplot(., aes(x = val)) +
+  geom_histogram(position = "identity") +
+  facet_wrap(~ trait, scale = "free")
+
+```
+
+# Fisrt-order metrics (without phylogeny or traits)
+
+## Species richness, Beta diversity metrics
+
+Skip
+
+## Nonmetric Multidimensional Scaling (NMDS)
+
+```{r}
+
+res_mds <- metaMDS(samp_mat)
+
+plot(res_mds)
+
+```
+
+We can use the function ordiplot and orditorp to add text to the plot in place of points to make some more sence.
+
+```{r}
+
+ordiplot(res_mds, type = "n")
+orditorp(res_mds,display="species",col="red",air=0.01)
+orditorp(res_mds,display="sites",cex=1.25,air=0.01)
+
+```
+
+# Phylogenetic metrics
+
+## Branch length based metric
+
+### PD 
+
+```{r}
+
+res_pd <- pd(samp_mat, phylo)
+
+res_pd
+
+```
+
+
+You can always see the help.
+
+```{r, eval = F}
+?pd
+```
+
+
+## Distance based metric 
+
+`cophenetic()` creates distance matrices based on phylogenetic trees. Let's see the first 5 species.
+
+```{r}
+cophenetic(phylo)[1:5, 1:5]
+```
+
+
+### MPD
+
+$MPD = \frac{1}{n} \Sigma^n_i \Sigma^n_j \delta_{i,j} \; i \neq j$, where
+$\delta_{i, j}$ is the pairwised distance between species *i* and *j*
+
+```{r}
+
+res_mpd <- mpd(samp_mat, cophenetic(phylo))
+
+res_mpd
+
+```
+
+The above vector shows MPD for each site.
+
+### MNTD
+
+$MNTD = \frac{1}{n} \Sigma^n_i min \delta_{i,j} \; i \neq j$, where $min \delta_{i, j}$ is the minimum distance between species *i* and all other species in the community.
+
+```{r}
+
+res_mntd <- mntd(samp_mat, cophenetic(phylo))
+
+res_mntd
+
+```
+
+
+
+# Functional metrics
+
+
+
+## Distance based metrics
+
+### Prepare a trait distance matrix
+
+We have a `data.fame` of traits. First we need to prepare a trait matrix, then a distance matrix based on trait values.
+
+```{r}
+
+trait_mat0 <- as.matrix(trait2[, -1])
+rownames(trait_mat0) <- trait2$Species
+
+```
+
+Let's see a subset of the trait matrix
+
+```{r}
+trait_mat0[1:5, 1:5]
+```
+
+Then, we will make trait distance matrix based on the Euclidean distance. There are
+other distance measures, for example [Gower's Distance](https://www.rdocumentation.org/packages/gower/versions/0.2.1/topics/gower_dist), but we focus on the Euclidean distance today.
+
+Before calulating distance, we need to make sure unit change in ditances have
+same for different traits. We will scale trait values so that then have mean = 0
+and SD = 1. (e.g., $(X_i - \mu) / \sigma$)
+
+```{r}
+trait_mat <- scale(trait_mat0)
+
+par(mfrow = c(2, 2))
+hist(trait_mat0[, "logSLA"])
+hist(trait_mat[, "logSLA"])
+hist(trait_mat0[, "RD"])
+hist(trait_mat[, "RD"])
+par(mfrow = c(1, 1))
+
+```
+
+Now we can make a trait distance matirx. 
+
+```{r}
+trait_dm <- as.matrix(dist(trait_mat))
+
+```
+
+Let's see the first 5 species.
+
+
+```{r}
+trait_dm[1:5, 1:5]
+```
+
+### MPD
+
+```{r}
+mpd(samp_mat, trait_dm)
+
+ses.mpd(samp_mat, trait_dm)
+
+```
+
+
+
+### MNTD
+
+```{r}
+mntd(samp_mat, trait_dm)
+```
+
+## Branch length based metric
+
+### FD
+
+We will make a functional dendrogram using clustring methods. We use [UPGMA](https://en.wikipedia.org/wiki/UPGMA) in
+this example.
+
+```{r, fig.width = 15, fig.height = 15}
+
+t_clust <- hclust(dist(trait_mat), method = "average")
+
+plot(t_clust)
+
+```
+
+
+### More functional diversity metrics
+
+```{r, eval = F}
+
+res_fd <- dbFD(trait_mat[colnames(samp_mat), ], samp_mat)
+
+res_fd
+
+```
+
+
