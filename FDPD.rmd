@@ -38,7 +38,7 @@ class: left, middle
 <img src="https://cdn-images-1.medium.com/max/800/1*3O597Dv2NGbNzg_dWRu2Hw.png"
 alt="phylo" width="180" />
 
-Masatoshi Katabuchi | katabuchi@xtbg.ac.cn | AFEC-X 2019::XTBG | 2019-10-30
+Masatoshi Katabuchi | katabuchi@xtbg.ac.cn | AFEC-X 2020::XTBG | 2020-11-2
 
 <!-- this ends up being the title slide since seal = FALSE-->
 
