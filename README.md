@@ -2,7 +2,7 @@
 
 Slides and materials for 2020-11-2 AFEC at XTBG.
 
-View the accompanying slides [here](https://mattocci27.github.io/slide/AFEC2019-trait/FDPD.html#1).
+View the accompanying slides [here](https://forest-canopy.github.io/assets/PDFD/FDPD.html#1) and cousre matreials [here](https://forest-canopy.github.io/assets/PDFD/diversity.html)
 
 
 # This slide is mainly based on:
