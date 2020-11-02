@@ -701,7 +701,7 @@ name:mpd
 $\delta_{i, j}$ is the pairwised distance between species *i* and *j*
 ]
 
-Greatest possible mean pairwise node distance for a community of 4 taxa = 22 /4 = 3.66 (for A, B, E, F)
+Greatest possible mean pairwise node distance for a community of 4 taxa = 22 / 6 pairs = 3.66 (for A, B, E, F)
 
 --
 
