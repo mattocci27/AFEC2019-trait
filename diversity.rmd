@@ -353,6 +353,20 @@ res_fd
 
 ```
 
+<iframe src="appendixA.htm" width="900" height="1200" allowfullscreen frameborder="0"></iframe>
+
+# Related
+
+- Aiba, M., Katabuchi, M., Takafumi, H., Matsuzaki, S.S., Sasaki, T. and Hiura, T. (2013), Robustness of trait distribution metrics for community assembly studies under the uncertainties of assembly processes. Ecology, 94: 2873-2885. [doi:10.1890/13-0269.1](https://esajournals.onlinelibrary.wiley.com/doi/abs/10.1890/13-0269.1)
+
+- [Phylogenetic diversity in R](https://daijiang.name/en/2014/05/04/notes-func-phylo-book-1/)
+
+- [Functional diversity in R](https://daijiang.name/en/2014/05/11/functional-diversity-in-r/)
+
+- [Biodiversity analysis in R](https://www.kembellab.ca/r-workshop/biodivR/SK_Biodiversity_R.html)  
+
+- [Measuring functional diveristy in R](http://traits-dgs.nceas.ucsb.edu/workspace/r/r-tutorial-for-measuring-functional-diversity/Measuring%20Functional%20Diversity%20in%20R.pdf/attachment_download/file)
+
 
 # Computing Environment
 
