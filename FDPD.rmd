@@ -1,7 +1,7 @@
 ---
 title: Functional diversity and phylogenetic diversity
 author: Masatoshi Katabuchi
-date: "2020/11/2 (updated: `r Sys.Date()`)"
+date: "2020/11/9"
 output:
  xaringan::moon_reader:
     css: ["./css/default.css", "./css/fdpd.css", "./css/fonts.css"]
@@ -38,7 +38,7 @@ class: left, middle
 <img src="https://cdn-images-1.medium.com/max/800/1*3O597Dv2NGbNzg_dWRu2Hw.png"
 alt="phylo" width="180" />
 
-Masatoshi Katabuchi | katabuchi@xtbg.ac.cn | AFEC-X 2020::XTBG | 2020-11-2
+Masatoshi Katabuchi | katabuchi@xtbg.ac.cn | AFEC-X 2021::XTBG | 2021-11-9
 
 <!-- this ends up being the title slide since seal = FALSE-->
 
@@ -56,6 +56,41 @@ We Learn:
 - Trait-based approaches
 
 ]
+
+---
+
+
+# Outline 0
+
+
+.pull-left[
+
+- Community assembly
+
+- Diversity measures
+    - First-Order Properties of Single Communities
+    - First-Order Properties of Multiple Communities
+    - Second-Order Properties with Site Characteristics
+    - Second-Order Properties with Species Traits
+
+- Phylogenetic measures
+    - Genus:species ratio
+    - Phylogenetic diversity
+    - (Functional diversity)
+    - Community phylogeny
+    - Phylogenetic signal
+]
+
+.pull-right[
+- Trait measures
+    - Phylogenetic middleman problem
+    - Functional traits
+    - Rebuilding community ecology from trait
+    - Convex hull (multiple trait)
+    - Single trait patterns
+    - Competitive hierarchy
+]
+
 
 ---
 
@@ -130,11 +165,129 @@ class: middle
 
 # How to quantify ecological communities `r emo::ji("leaf")`
 
-.footnote[
-[1] Vellend, M. (2016). The Theory of Ecological Communities. Princeton University Press
+---
+
+## 1a) First-order properties of single communities
+
+Which community is more diverse?
+
+![com-simple](./img/com_simple.png)
+
+--
+
+.pull-left[
+- Species richness = 10 
+
+- What is the chance to get the same species?
+
 ]
 
 --
+
+.pull-left[
+- A: $\frac{9}{10} \times \frac{8}{9} + \frac{1}{10} \times \frac{0}{9} = 0.8$ 
+
+
+- B: $\frac{5}{10} \times \frac{4}{9} + \frac{5}{10} \times \frac{4}{9}  \simeq 0.44$ 
+]
+
+---
+
+name: shannon
+
+## 1a) First-order properties of single communities
+
+.pull-left[
+Which community is more diverse?
+
+![com-simple](./img/com_simple.png)
+
+- A: $\frac{9}{10} \times \frac{8}{9} + \frac{1}{10} \times \frac{0}{9} = 0.8$ 
+
+
+- B: $\frac{5}{10} \times \frac{4}{9} + \frac{5}{10} \times \frac{4}{9}  \simeq 0.44$ 
+
+- We prefer that large values indicate more diverse communities.
+]
+
+--
+
+.pull-right[
+
+- Diversity of A: 1 - 0.8 = 0.2
+
+- Diversity of B: 1 - 0.44 = 0.56
+
+]
+
+--
+
+.pull-right[
+
+- Simpson's Index of Diversity: $D = 1 - \Sigma\frac{n_i(n_i - 1)}{N_i(N_i - 1)}$
+
+
+- Simpson's Index of Diversity (ver. 2): $D = 1 - \Sigma p_i^2$
+
+]
+
+
+.footnote[
+*n*: number of individuals of each species,
+*N*: total number of individuals of all species,
+*p*: relative species abundance
+
+]
+
+
+---
+
+## 1a) First-order properties of single communities
+
+.pull-left[
+Which community is more diverse?
+
+![com-simple](./img/com_simple.png)
+
+- A: $\frac{9}{10} \times \frac{8}{9} + \frac{1}{10} \times \frac{0}{9} = 0.8$ 
+
+
+- B: $\frac{5}{10} \times \frac{4}{9} + \frac{5}{10} \times \frac{4}{9}  \simeq 0.44$ 
+
+- We prefer that large values indicate more diverse communities.
+]
+
+--
+
+.pull-right[
+
+- Diversity of A: 1 - 0.8 = 0.2
+
+- Diversity of B: 1 - 0.44 = 0.56
+
+]
+
+--
+
+.pull-right[
+
+- Simpson's Index of Diversity: $D = 1 - \Sigma\frac{n_i(n_i - 1)}{N_i(N_i - 1)}$
+
+
+- Simpson's Index of Diversity (ver. 2): $D = 1 - \Sigma p_i^2$
+
+]
+
+
+.footnote[
+*n*: number of individuals of each species,
+*N*: total number of individuals of all species,
+*p*: relative species abundance
+
+]
+
+
+---
 
 ## 1a) First-order properties of single communities
 
