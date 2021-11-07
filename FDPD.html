@@ -151,7 +151,7 @@ class: middle
 name: first-order-single
 class: middle
 
-# How to quantify ecological communities 🍀
+# How to quantify ecological communities 🍂
 
 ---
 
@@ -161,7 +161,7 @@ class: middle
 
 .pull-left[
 
-- A vector of species abundance
+- A **vector** of species abundance
 - Species composition
 
 &lt;table&gt;
@@ -324,8 +324,8 @@ Another simple way to describe diversity?
 
 .pull-right[
 - We prefer that large values indicate more diverse communities.
-- A: `\(-1 \times -0.32 = 0.32\)`
-- B: `\(-1 \times -0.69 = 0.69\)`
+- A: `\(-1 \times (-0.32) = 0.32\)`
+- B: `\(-1 \times (-0.69) = 0.69\)`
 ]
 
 --
@@ -356,7 +356,7 @@ name: first-order-multi
 
 .pull-left[
 
-- Species `\(\times\)` site matrix
+- Species `\(\times\)` site **matrix**
 - Metacommunity
 
 &lt;table&gt;
@@ -456,7 +456,7 @@ Bray–Curtis dissimilarity
 `\(BC_{ij}=1-2\frac{\sum min\left(S_{A,i}\mbox{, } S_{B,i}\right)}{\sum S_{A,i}+\sum S_{B,i}}\)`
 
 
-Site 1 vs Site2:  1 - (2 * (0 + 250 + 56 + 18) / (4 +300 + 56 + 23 + 0 + 250 + 120 + 18)) = 0.16
+Site 1 vs Site 2:  1 - (2 * (0 + 250 + 56 + 18) / (4 +300 + 56 + 23 + 0 + 250 + 120 + 18)) = 0.16
 
 ]
 
@@ -485,68 +485,140 @@ name: second-order-env
   &lt;tr grouplength="4"&gt;&lt;td colspan="5" style="border-bottom: 1px solid;"&gt;&lt;strong&gt;Abundance&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
 &lt;tr&gt;
    &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; Sp 1 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 4.00 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 315.0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 23.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 315 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 23 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; Sp 2 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 300.00 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 250.0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 18.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 300 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 250 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 18 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; Sp 3 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 56.00 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 120.0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 74.0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 56 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 120 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 74 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; Sp 4 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 23.00 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 18.0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 101.0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 23 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 18 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 101 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
   &lt;/tr&gt;
-  &lt;tr grouplength="4"&gt;&lt;td colspan="5" style="border-bottom: 1px solid;"&gt;&lt;strong&gt;Env&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr grouplength="3"&gt;&lt;td colspan="5" style="border-bottom: 1px solid;"&gt;&lt;strong&gt;Env&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
 &lt;tr&gt;
    &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; Site characteristic 1 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 10.00 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1.0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 7.0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 16.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 780 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2500 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 480 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1200 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; Site characteristic 2 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.01 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.4 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.2 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 21 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 11 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 24 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 19 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; Site characteristic 3 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 90.00 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 92.0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 95.0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 97.0 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; Site characteristic 4 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 12.00 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.1 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 5.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1500 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1900 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 700 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4500 &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 ]
 
 .pull-right[
-- Species `\(\times\)` site and site `\(\times\)` environment
+- "Species `\(\times\)` site" and "site `\(\times\)` environment"]
+
+---
+name: second-order-env
+
+.footnote[
+[1] Vellend, M. (2016). The Theory of Ecological Communities. Princeton University Press
 ]
+
+## 2a) Second-Order properties with site characteristics (1950s ~)
+
+.pull-left[
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt;   &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Site 1 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Site 2 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Site 3 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Site 4 &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr grouplength="4"&gt;&lt;td colspan="5" style="border-bottom: 1px solid;"&gt;&lt;strong&gt;Abundance&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; Sp 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 315 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 23 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; Sp 2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 300 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 250 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 18 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; Sp 3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 56 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 120 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 74 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; Sp 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 23 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 18 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 101 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr grouplength="3"&gt;&lt;td colspan="5" style="border-bottom: 1px solid;"&gt;&lt;strong&gt;Env&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; Elevation (m) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 780 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2500 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 480 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1200 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; MAT (℃) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 21 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 11 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 24 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 19 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; MAP (mm) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1500 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1900 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 700 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4500 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]
+
+.pull-right[
+- "Species `\(\times\)` site" and "site `\(\times\)` environment"]
 
 --
 
@@ -567,6 +639,7 @@ name: second-order-trait
 
 .footnote[
 [1] Vellend, M. (2016). The Theory of Ecological Communities. Princeton University Press
+
 ]
 
 ## 2b) Second-Order properties with species characteristics (2000s ~)
@@ -588,60 +661,53 @@ name: second-order-trait
   &lt;tr grouplength="4"&gt;&lt;td colspan="5" style="border-bottom: 1px solid;"&gt;&lt;strong&gt;Abundance&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
 &lt;tr&gt;
    &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; Sp 1 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 4.00 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 315.0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 23.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 315 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 23 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; Sp 2 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 300.00 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 250.0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 18.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 300 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 250 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 18 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; Sp 3 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 56.00 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 120.0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 74.0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 56 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 120 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 74 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; Sp 4 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 23.00 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 18.0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 101.0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 23 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 18 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 101 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
   &lt;/tr&gt;
-  &lt;tr grouplength="4"&gt;&lt;td colspan="5" style="border-bottom: 1px solid;"&gt;&lt;strong&gt;Env&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr grouplength="3"&gt;&lt;td colspan="5" style="border-bottom: 1px solid;"&gt;&lt;strong&gt;Env&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
 &lt;tr&gt;
-   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; Site characteristic 1 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 10.00 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1.0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 7.0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 16.0 &lt;/td&gt;
+   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; Elevation (m) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 780 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2500 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 480 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1200 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; Site characteristic 2 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.01 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.4 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.2 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.5 &lt;/td&gt;
+   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; MAT (℃) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 21 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 11 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 24 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 19 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; Site characteristic 3 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 90.00 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 92.0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 95.0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 97.0 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; Site characteristic 4 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 12.00 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.1 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 5.0 &lt;/td&gt;
+   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; MAP (mm) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1500 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1900 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 700 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4500 &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -662,56 +728,175 @@ name: second-order-trait
 &lt;tbody&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Sp 1 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.6 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 5.1 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3.7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.8 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 30.0 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Sp 2 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.8 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 24.9 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 4.7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12.5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.1 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 22.4 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Sp 3 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 4.8 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 7.1 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 25.1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5.9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5.7 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 11.5 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Sp 4 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1.1 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1.3 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 10.6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.4 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 119.9 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+- "Trait `\(\times\)` species", "species `\(\times\)` site", "site `\(\times\)` environment"
+]
+
+
+---
+
+name: second-order-trait2
+
+.footnote[
+[1] Vellend, M. (2016). The Theory of Ecological Communities. Princeton University Press
+
+]
+
+## 2b) Second-Order properties with species characteristics (2000s ~)
+
+
+.pull-left[
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt;   &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Site 1 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Site 2 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Site 3 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Site 4 &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr grouplength="4"&gt;&lt;td colspan="5" style="border-bottom: 1px solid;"&gt;&lt;strong&gt;Abundance&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; Sp 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 315 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 23 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; Sp 2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 300 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 250 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 18 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; Sp 3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 56 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 120 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 74 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; Sp 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 23 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 18 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 101 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr grouplength="3"&gt;&lt;td colspan="5" style="border-bottom: 1px solid;"&gt;&lt;strong&gt;Env&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; Elevation (m) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 780 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2500 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 480 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1200 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; MAT (℃) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 21 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 11 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 24 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 19 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; MAP (mm) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1500 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1900 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 700 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4500 &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 ]
 
---
-
 .pull-right[
-- Trait `\(\times\)` species, species `\(\times\)` site, site `\(\times\)` environment
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt;   &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Leaf N &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Amax &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Rdark &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; LL &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Sp 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 30.0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Sp 2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12.5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 22.4 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Sp 3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5.9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5.7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 11.5 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Sp 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 119.9 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+- "Trait `\(\times\)` species", "species `\(\times\)` site", "site `\(\times\)` environment"
 ]
 
 --
 
 .pull-right[
 - Trait diversity and composition
-]
 
---
-
-.pull-right[
 - Trait composition-environment relationships
 ]
 
 ---
-
 
 # How to measure species characteristics?
 
@@ -779,7 +964,7 @@ class:middle, center
 
 # Solution for the genus:spcies ratio problem = Use phylogenetic trees
 
-&lt;img src="FDPD_files/figure-html/unnamed-chunk-8-1.png" width="504" /&gt;
+&lt;img src="FDPD_files/figure-html/unnamed-chunk-11-1.png" width="504" /&gt;
 
 ---
 
@@ -823,7 +1008,7 @@ class:middle, center
 
 .pull-left[
 
-&lt;img src="FDPD_files/figure-html/unnamed-chunk-10-1.png" width="504" /&gt;
+&lt;img src="FDPD_files/figure-html/unnamed-chunk-13-1.png" width="504" /&gt;
 ]
 
 .pull-right[
@@ -856,7 +1041,7 @@ class:middle, center
 
 .pull-left[
 
-&lt;img src="FDPD_files/figure-html/unnamed-chunk-12-1.png" width="504" /&gt;
+&lt;img src="FDPD_files/figure-html/unnamed-chunk-15-1.png" width="504" /&gt;
 ]
 
 --
@@ -873,7 +1058,7 @@ class:middle, center
 
 
 .pull-left[
-&lt;img src="FDPD_files/figure-html/unnamed-chunk-14-1.png" width="504" /&gt;
+&lt;img src="FDPD_files/figure-html/unnamed-chunk-17-1.png" width="504" /&gt;
 ]
 
 --
@@ -930,7 +1115,7 @@ class:middle, center
 
 .pull-left[
 
-&lt;img src="FDPD_files/figure-html/unnamed-chunk-15-1.png" width="288" /&gt;
+&lt;img src="FDPD_files/figure-html/unnamed-chunk-18-1.png" width="288" /&gt;
 
 ]
 
