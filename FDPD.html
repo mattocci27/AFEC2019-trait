@@ -151,10 +151,66 @@ class: middle
 name: first-order-single
 class: middle
 
-# How to quantify ecological communities 🔰
+# How to quantify ecological communities 🍀
 
 ---
 
+## 1a) First-order properties of single communities
+
+--
+
+.pull-left[
+
+- A vector of species abundance
+- Species composition
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt;   &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Site1 &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Sp1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Sp2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 300 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Sp3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 56 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Sp4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 23 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]
+
+
+
+.pull-right[
+- Species richness = 4
+]
+
+--
+
+.pull-right[
+- Simpson's evenness = 1/ Σfreq&lt;sub&gt;i&lt;/sub&gt;&lt;sup&gt;2&lt;/sup&gt; = (4/383)&lt;sup&gt;2&lt;/sup&gt; + (300/383)&lt;sup&gt;2&lt;/sup&gt; + (56/383)&lt;sup&gt;2&lt;/sup&gt; + (23/383)&lt;sup&gt;2&lt;/sup&gt;
+]
+
+--
+
+.pull-right[
+&lt;img src="FDPD_files/figure-html/unnamed-chunk-2-1.png" width="504" /&gt;
+]
+
+---
 ## 1a) First-order properties of single communities
 
 Which community is more diverse?
@@ -180,6 +236,8 @@ Which community is more diverse?
 ]
 
 ---
+
+name: shannon
 
 ## 1a) First-order properties of single communities
 
@@ -210,10 +268,12 @@ Which community is more diverse?
 
 .pull-right[
 
-- Simpson's Index of Diversity: `\(D = 1 - \Sigma\frac{n_i(n_i - 1)}{N_i(N_i - 1)}\)`
+- Simpson's Index of Diversity: 
+  `\(D = 1 - \Sigma\frac{n_i(n_i - 1)}{N_i(N_i - 1)}\)`
 
 
-- Simpson's Index of Diversity (2): `\(D = 1 - \Sigma p_i^2\)`
+- Simpson's Index of Diversity (ver. 2):
+  `\(D = 1 - \Sigma p_i^2\)`
 
 ]
 
@@ -230,60 +290,59 @@ Which community is more diverse?
 
 ## 1a) First-order properties of single communities
 
---
-
 .pull-left[
+Another simple way to describe diversity?
 
-- A vector of species abundance
-- Species compsiton
+![com-simple](./img/com_simple.png)
 
-&lt;table&gt;
- &lt;thead&gt;
-  &lt;tr&gt;
-   &lt;th style="text-align:left;"&gt;   &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; Site1 &lt;/th&gt;
-  &lt;/tr&gt;
- &lt;/thead&gt;
-&lt;tbody&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Sp1 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Sp2 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 300 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Sp3 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 56 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Sp4 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 23 &lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
+- A: Sp.1: 0.9, Sp. 2: 0.1
+
+- B: Sp.1: 0.5, Sp. 2: 0.5
+
+- Diversity of A: 0.9 x 0.1 = 0.09?
+
+- Diversity of B: 0.5 x 0.5 = 0.025?
+
+- Diversity x Diversity? What is the unit?
+
 ]
 
 --
 
 .pull-right[
-- Species richness = 4
+- `\(\mathrm{log}(x \times y) = \mathrm{log}(x) + \mathrm{log}(y)\)`
 ]
 
 --
 
 .pull-right[
-- Simpson's evenness = 1/ Σfreq&lt;sub&gt;i&lt;/sub&gt;&lt;sup&gt;2&lt;/sup&gt; = (4/383)&lt;sup&gt;2&lt;/sup&gt; + (300/383)&lt;sup&gt;2&lt;/sup&gt; + (56/383)&lt;sup&gt;2&lt;/sup&gt; + (23/383)&lt;sup&gt;2&lt;/sup&gt;
+- A: `\(0.9 \times \mathrm{log}(0.9) + 0.1 \times \mathrm{log}(0.1) \simeq -0.32\)`
+- B: `\(0.5 \times \mathrm{log}(0.5) + 0.5 \times \mathrm{log}(0.5) \simeq -0.69\)`
 ]
 
 --
 
 .pull-right[
-&lt;img src="FDPD_files/figure-html/unnamed-chunk-2-1.png" width="504" /&gt;
+- We prefer that large values indicate more diverse communities.
+- A: `\(-1 \times -0.32 = 0.32\)`
+- B: `\(-1 \times -0.69 = 0.69\)`
 ]
+
+--
+
+.pull-right[
+- Shannon Diversity Index: `\(H' = -\Sigma p_i\mathrm{log}p_i\)`
+]
+
+
+
+.footnote[
+*p*: relative species abundance
+]
+
 
 ---
+
 
 name: first-order-multi
 

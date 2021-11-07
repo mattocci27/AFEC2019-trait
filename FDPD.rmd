@@ -169,6 +169,52 @@ class: middle
 
 ## 1a) First-order properties of single communities
 
+--
+
+.pull-left[
+
+- A vector of species abundance
+- Species composition
+
+```{r, echo = F}
+ab1 <- c(4, 300, 56, 23) |> as.matrix()
+rownames(ab1) <- paste0("Sp", 1:4)
+colnames(ab1) <- "Site1"
+ab1 |>
+  knitr::kable(format = "html")
+```
+]
+
+
+
+.pull-right[
+- Species richness = 4
+]
+
+--
+
+.pull-right[
+- Simpson's evenness = 1/ Σfreq<sub>i</sub><sup>2</sup> = (4/383)<sup>2</sup> + (300/383)<sup>2</sup> + (56/383)<sup>2</sup> + (23/383)<sup>2</sup>
+]
+
+--
+
+.pull-right[
+```{r, echo = F, fig.retina = 3, fig.height = 3}
+ggplot(ab1 |> as.data.frame(), aes(x = rank(-ab1), y = ab1)) +
+  geom_point() +
+  geom_line() +
+  theme_light() +
+  xlab("Species rank") +
+  ylab("Abundance rank") +
+  ggtitle("Species abundance distribution")
+
+```
+]
+
+---
+## 1a) First-order properties of single communities
+
 Which community is more diverse?
 
 ![com-simple](./img/com_simple.png)
@@ -224,10 +270,12 @@ Which community is more diverse?
 
 .pull-right[
 
-- Simpson's Index of Diversity: $D = 1 - \Sigma\frac{n_i(n_i - 1)}{N_i(N_i - 1)}$
+- Simpson's Index of Diversity: 
+  $D = 1 - \Sigma\frac{n_i(n_i - 1)}{N_i(N_i - 1)}$
 
 
-- Simpson's Index of Diversity (ver. 2): $D = 1 - \Sigma p_i^2$
+- Simpson's Index of Diversity (ver. 2):
+  $D = 1 - \Sigma p_i^2$
 
 ]
 
@@ -245,96 +293,58 @@ Which community is more diverse?
 ## 1a) First-order properties of single communities
 
 .pull-left[
-Which community is more diverse?
+Another simple way to describe diversity?
 
 ![com-simple](./img/com_simple.png)
 
-- A: $\frac{9}{10} \times \frac{8}{9} + \frac{1}{10} \times \frac{0}{9} = 0.8$ 
+- A: Sp.1: 0.9, Sp. 2: 0.1
 
+- B: Sp.1: 0.5, Sp. 2: 0.5
 
-- B: $\frac{5}{10} \times \frac{4}{9} + \frac{5}{10} \times \frac{4}{9}  \simeq 0.44$ 
+- Diversity of A: 0.9 x 0.1 = 0.09?
 
+- Diversity of B: 0.5 x 0.5 = 0.025?
+
+- Diversity x Diversity? What is the unit?
+
+]
+
+--
+
+.pull-right[
+- $\mathrm{log}(x \times y) = \mathrm{log}(x) + \mathrm{log}(y)$
+]
+
+--
+
+.pull-right[
+- A: $0.9 \times \mathrm{log}(0.9) + 0.1 \times \mathrm{log}(0.1) \simeq -0.32$
+- B: $0.5 \times \mathrm{log}(0.5) + 0.5 \times \mathrm{log}(0.5) \simeq -0.69$
+]
+
+--
+
+.pull-right[
 - We prefer that large values indicate more diverse communities.
+- A: $-1 \times -0.32 = 0.32$
+- B: $-1 \times -0.69 = 0.69$
 ]
 
 --
 
 .pull-right[
-
-- Diversity of A: 1 - 0.8 = 0.2
-
-- Diversity of B: 1 - 0.44 = 0.56
-
+- Shannon Diversity Index: $H' = -\Sigma p_i\mathrm{log}p_i$
 ]
 
---
-
-.pull-right[
-
-- Simpson's Index of Diversity: $D = 1 - \Sigma\frac{n_i(n_i - 1)}{N_i(N_i - 1)}$
-
-
-- Simpson's Index of Diversity (ver. 2): $D = 1 - \Sigma p_i^2$
-
-]
 
 
 .footnote[
-*n*: number of individuals of each species,
-*N*: total number of individuals of all species,
 *p*: relative species abundance
-
 ]
 
 
 ---
 
-## 1a) First-order properties of single communities
-
---
-
-.pull-left[
-
-- A vector of species abundance
-- Species compsiton
-
-```{r, echo = F}
-ab1 <- c(4, 300, 56, 23) %>% as.matrix
-rownames(ab1) <- paste0("Sp", 1:4)
-colnames(ab1) <- "Site1"
-ab1 %>%
-  knitr::kable(format = "html")
-```
-]
-
---
-
-.pull-right[
-- Species richness = 4
-]
-
---
-
-.pull-right[
-- Simpson's evenness = 1/ Σfreq<sub>i</sub><sup>2</sup> = (4/383)<sup>2</sup> + (300/383)<sup>2</sup> + (56/383)<sup>2</sup> + (23/383)<sup>2</sup>
-]
-
---
-
-.pull-right[
-```{r, echo = F, fig.retina = 3, fig.height = 3}
-ggplot(ab1 %>% as.data.frame, aes(x = rank(-ab1), y = ab1)) +
-  geom_point() +
-  geom_line() +
-  theme_light() +
-  xlab("Species rank") +
-  ylab("Abundance rank") +
-  ggtitle("Species abundance distribution")
-
-```
-]
-
----
 
 name: first-order-multi
 
