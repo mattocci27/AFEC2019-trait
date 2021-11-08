@@ -1,11 +1,10 @@
 ---
 title: Functional diversity and phylogenetic diversity
 author: Masatoshi Katabuchi
-date: "2020/11/9"
+date: "2021/11/9"
 output:
  xaringan::moon_reader:
     css: ["./css/default.css", "./css/fdpd.css", "./css/fonts.css"]
-    #css: ["default", "sfah.css", "fonts.css"]
     lib_dir: libs
     nature:
       highlightStyle: atom-one-dark
@@ -19,17 +18,9 @@ output:
       in_header: header.html
 ---
 
-
-```{r setup, include=FALSE}
-options(htmltools.dir.version = FALSE)
-library(knitr)
-knitr::opts_chunk$set(warning = FALSE, message = FALSE, echo = FALSE, fig.retina = 3)
-library(tidyverse)
-library(fontawesome) # from github: https://github.com/rstudio/fontawesome
-library(kableExtra)
-library(picante)
-library(entropart)
+```{r external, child="setup.Rmd", include=FALSE}
 ```
+
 name:FDPD-title
 class: left, middle
 
@@ -59,98 +50,37 @@ We Learn:
 
 ---
 
-
-# Outline 0
-
-
-.pull-left[
-
-- Community assembly
-
-- Diversity measures
-    - First-Order Properties of Single Communities
-    - First-Order Properties of Multiple Communities
-    - Second-Order Properties with Site Characteristics
-    - Second-Order Properties with Species Traits
-
-- Phylogenetic measures
-    - Genus:species ratio
-    - Phylogenetic diversity
-    - (Functional diversity)
-    - Community phylogeny
-    - Phylogenetic signal
-]
-
-.pull-right[
-- Trait measures
-    - Phylogenetic middleman problem
-    - Functional traits
-    - Rebuilding community ecology from trait
-    - Convex hull (multiple trait)
-    - Single trait patterns
-    - Competitive hierarchy
-]
-
-
----
-
-# Outline
-
-
-.pull-left[
-
-- Community assembly
-
-- Diversity measures
-    - First-Order Properties of Single Communities
-    - First-Order Properties of Multiple Communities
-    - Second-Order Properties with Site Characteristics
-    - Second-Order Properties with Species Traits
-
-- Phylogenetic measures
-    - Genus:species ratio
-    - Phylogenetic diversity
-    - (Functional diversity)
-    - Community phylogeny
-    - Phylogenetic signal
-]
-
-.pull-right[
-- Trait measures
-    - Phylogenetic middleman problem
-    - Functional traits
-    - Rebuilding community ecology from trait
-    - Convex hull (multiple trait)
-    - Single trait patterns
-    - Competitive hierarchy
-]
-
-
----
-
 # Community Assembly and Species Coexistence
 
 For over a century, filed ecologist have been characterizing patterns in ecological communities and trying to draw theoretical inferences form the resulting data.
 
---
+<img src="img/sp_coex.jpg" width="65%" style="display: block; margin: auto;"/>
+
+---
+
+.pull-left[
 
 ## Central Questions:
 
 - Why do species occurs at the particular places?
 
---
-
 - Why do some pairs of species coexist while others not?
 
+]
+
+.pull-right[
+<img src="img/tree_dist.png" width="90%"/>
+]
+
 --
 
+.pull-left[
 ## Predictions:
 
-- **Environmental filtering**: Ecologically similar species should coexist in ecologically similar environments.
+- **Environmental filtering**: .blue[**Ecologically similar**] species should coexist in ecologically similar environments.
 
---
-
-- **Limiting similarity**: Ecologically dissimilar species should coexist because too similar species competing for the same resources cannot stably coexist.
+- **Limiting similarity**: .orange[**Ecologically dissimilar**] species should coexist because too similar species competing for the same resources cannot stably coexist.
+]
 
 ---
 
@@ -204,11 +134,9 @@ ab1 |>
 ggplot(ab1 |> as.data.frame(), aes(x = rank(-ab1), y = ab1)) +
   geom_point() +
   geom_line() +
-  theme_light() +
   xlab("Species rank") +
   ylab("Abundance rank") +
   ggtitle("Species abundance distribution")
-
 ```
 ]
 
@@ -376,7 +304,7 @@ ab %>%
 --
 
 .pull-right[
-- Dissimilarity matrix
+- Dissimilarity matrix (site $\times$ site)
 
 ```{r, echo = F}
 library(vegan)
@@ -393,7 +321,6 @@ vegdist(t(ab), method = "bray") %>%
 Bray–Curtis dissimilarity
 
 $BC_{ij}=1-2\frac{\sum min\left(S_{A,i}\mbox{, } S_{B,i}\right)}{\sum S_{A,i}+\sum S_{B,i}}$
-
 
 Site 1 vs Site 2:  1 - (2 * (0 + 250 + 56 + 18) / (4 +300 + 56 + 23 + 0 + 250 + 120 + 18)) = 0.16
 
@@ -587,14 +514,14 @@ trait %>%
 
 Photosynthetic rates
 
-<img src="https://www.licor.com/env/products/photosynthesis/LI-6800/images/li6800-hero3.png" width="100%"/>
+<img src="img/li6800-hero3.png" width="100%"/>
 ]
 
 --
 
 .right-column[
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/BorneoRainforest_DSC_9267.JPG/1200px-BorneoRainforest_DSC_9267.JPG" width="100%"/>
+<img src="img/1200px-BorneoRainforest_DSC_9267.JPG" width="100%"/>
 
 ]
 
@@ -611,17 +538,17 @@ Community with 3 genus and 3 species (3:3) vs community with 1 genus and 3 speci
 
 --
 
-- A high genus:species ratio indicates distantly related and ecologically
+- A .orange[**high**] genus:species ratio indicates distantly related and ecologically
   dissimilar species coexist.
 
-    - Limiting similarity
+  - .orange[**Limiting similarity**]
 
 --
 
-- A low genus:species ratio indicates closely related and ecologically
+- A .blue[**low**] genus:species ratio indicates closely related and ecologically
   similar species coexist.
 
-    - Environmental filtering
+   - .blue[**Environmental filtering**]
 
 ---
 
@@ -636,16 +563,15 @@ Community with 3 genus and 3 species (3:3) vs community with 1 genus and 3 speci
 
 --
 
-- A large criticism of genus:speices ratio analyses is that they do not take
-  acount for the different ages of genera and species
+- A large criticism of genus:species ratio analyses is that they do not take
+  account for the different ages of genera and species
     - Two species in a relatively young genus may be expected to be more similar than two species in a relatively old genus.
-
 
 ---
 
 class:middle, center
 
-# Solution for the genus:spcies ratio problem = Use phylogenetic trees
+# Solution for the genus:species ratio problem = Use phylogenetic trees
 
 ```{r, echo = F}
 
@@ -885,23 +811,25 @@ tiplabels(
 
 .pull-left[
 
-```{r, fig.width =4, fig.height=4.5}
+```{r com-phylo, fig.width =4, fig.height=4.5}
 
 aa2 <- c(1, 3, 5, 9, 11, 13)
 names(aa2) <- c("E", "F", "D", "B", "A", "C")
 
-t2 <- aa2 %>%
-  dist %>%
-  hclust %>%
-  as.phylo
+t2 <- aa2 |>
+  dist() |>
+  hclust() |>
+  as.phylo()
 
 plot(t2,
    show.tip.label = FALSE,
    direction = "rightwards",
-   main = "Community phylogeny")
+   main = "Community phylogeny",
+   cex.main = 2
+)
 
 tiplabels(t2$tip.label,
-          cex = 2,
+          cex = 1.5,
           frame = "none")
 
 ```
@@ -912,20 +840,43 @@ tiplabels(t2$tip.label,
 
 .pull-right[
 
-Distance matrix
+**Distance matrix**
 
-```{r}
+```{r com-dist}
 tmp <- rep(1, 6)
 names(tmp) <- LETTERS[1:6]
-dist_all <- tmp %>% dist
+dist_all <- tmp |> dist()
 dist_all[1:15] <- c(1, 2, 4, 5, 5,
                     2, 4, 5, 5,
                     3, 4, 4,
                     2, 2,
                     1)
-mat_all <- dist_all %>% as.matrix
+mat_all <- dist_all |> as.matrix()
 
 dist_all
+```
+]
+
+---
+name:mpd0
+
+# Mean Pairwise Distance (MPD) and Net Related Index (NRI)
+
+.footnote[
+[1] $MPD = \frac{1}{n} \sum^{n}_{i} \sum^n_j \delta_{i,j} \; i \neq j$, where
+$\delta_{i, j}$ is the pairwise distance between species *i* and *j*
+]
+
+Greatest possible mean pairwise node distance for a community of 4 taxa: 22 / 6 pairs = 3.66 (for A, B, E, F)
+
+.pull-left[
+```{r com-phylo, fig.width =4, fig.height=4.5}
+```
+]
+
+.pull-right[
+**Distance matrix**
+```{r com-dist}
 ```
 ]
 
@@ -935,11 +886,11 @@ name:mpd
 # Mean Pairwise Distance (MPD) and Net Related Index (NRI)
 
 .footnote[
-[1] $MPD = \frac{1}{n} \Sigma^n_i \Sigma^n_j \delta_{i,j} \; i \neq j$, where
-$\delta_{i, j}$ is the pairwised distance between species *i* and *j*
+[1] $MPD = \frac{1}{n} \sum^{n}_{i} \sum^n_j \delta_{i,j} \; i \neq j$, where
+$\delta_{i, j}$ is the pairwise distance between species *i* and *j*
 ]
 
-Greatest possible mean pairwise node distance for a community of 4 taxa = 22 / 6 pairs = 3.66 (for A, B, E, F)
+Greatest possible mean pairwise node distance for a community of 4 taxa: 22 / 6 pairs = 3.66 (for A, B, E, F)
 
 --
 
@@ -952,9 +903,9 @@ dist1 <- mat_all[LETTERS[1:4], LETTERS[1:4]] %>% as.dist
 dist1
 ```
 
-Mean pairwise nodal distance (**MPD**) = (1 + 2 + 2 + 4 + 4 + 3) / 6 = 2.66
+**MPD** = (1 + 2 + 2 + 4 + 4 + 3) / 6 = 2.66
 
-Net Related Index (**NRI**) = 1 - (2.66 / 3.66) = 0.273
+**NRI** = 1 - (2.66 / 3.66) = 0.273
 
 ]
 
@@ -969,12 +920,36 @@ dist2 <- mat_all[c("A", "B", "E", "F"), c("A", "B", "E", "F")]  %>% as.dist
 dist2
 ```
 
-Mean pairwise nodal distance (**MPD**) = (1 + 5 + 5 + 5 + 5 + 1) / 6 = 3.66
+**MPD** = (1 + 5 + 5 + 5 + 5 + 1) / 6 = 3.66
 
-Net Related Index (**NRI**) = 1 - (3.66 / 3.66) = 0
+**NRI** = 1 - (3.66 / 3.66) = 0
 
 ]
 
+
+---
+
+name:mntd0
+
+# Mean Nearest Nodal Distance (MNTD) and Nearest Taxa Index (NTI)
+
+.footnote[
+[1] $MNTD = \frac{1}{n} \sum^n_i min \delta_{i,j} \; i \neq j$, where $min \delta_{i, j}$ is the minimum distance between species *i* and all other species in the community.
+]
+
+Greatest possible nearest nodal distance for a community of 4 taxa = 2 (for A, C, D, F)
+(A to C = 2, C to A = 2, D to F = 2, F to D = 2)
+
+.pull-left[
+```{r com-phylo, fig.width =4, fig.height=4.5}
+```
+]
+
+.pull-right[
+**Distance matrix**
+```{r com-dist}
+```
+]
 
 ---
 name:mntd
@@ -982,29 +957,26 @@ name:mntd
 # Mean Nearest Nodal Distance (MNTD) and Nearest Taxa Index (NTI)
 
 .footnote[
-[1] $MNTD = \frac{1}{n} \Sigma^n_i min \delta_{i,j} \; i \neq j$, where $min \delta_{i, j}$ is the minimum distance between species *i* and all other species in the community.
+[1] $MNTD = \frac{1}{n} \sum^n_i min \delta_{i,j} \; i \neq j$, where $min \delta_{i, j}$ is the minimum distance between species *i* and all other species in the community.
 ]
 
-Greatest possible nearest nodel distance for a community of 4 taxa = 2 (for A, C, D, F)
-
-(A to C = 2, C to A = 2, E to F = 2, F to E = 2)
+Greatest possible nearest nodal distance for a community of 4 taxa = 2 (for A, C, D, F)
+(A to C = 2, C to A = 2, D to F = 2, F to D = 2)
 
 ```{r}
 dist3 <- mat_all[c("A", "C", "D", "F"), c("A", "C", "D", "F")]  %>% as.dist
 ```
 
 .pull-left[
-
 Community 1; A, B, C, D
 
 ```{r}
 dist1
 ```
 
-Mean nearest nodal distance (**MNTD**) = (1 + 1 + 2 + 3) / 4 = 1.75
+**MNTD** = (1 + 1 + 2 + 3) / 4 = 1.75
 
-Nearest Taxa Index (**NTI**) = 1 - (1.75 / 2.0) = 0.125
-
+**NTI** = 1 - (1.75 / 2.0) = 0.125
 ]
 
 --
@@ -1018,9 +990,9 @@ dist2 <- mat_all[c("A", "B", "E", "F"), c("A", "B", "E", "F")]  %>% as.dist
 dist2
 ```
 
-Mean nearest nodal distance (**MNTD**) = (1 + 1 + 1 + 1) / 4 = 1
+**MNTD** = (1 + 1 + 1 + 1) / 4 = 1
 
-Nearest Taxa Index (**NTI**) = 1 - (1 / 2.0) = 0.5
+**NTI** = 1 - (1 / 2.0) = 0.5
 
 ]
 
@@ -1442,3 +1414,60 @@ Competitive effect of species A on species B will increase with increasing $t_A 
 - How to calculate trait and phylogenetic diversity?
 
   - I hope you remember it!
+
+---
+
+# What we learned today
+
+
+.pull-left[
+
+- Community assembly
+
+- Diversity measures
+    - First-Order Properties of Single Communities
+    - First-Order Properties of Multiple Communities
+    - Second-Order Properties with Site Characteristics
+    - Second-Order Properties with Species Traits
+
+- Phylogenetic measures
+    - Genus:species ratio
+    - Phylogenetic diversity
+    - (Functional diversity)
+    - Community phylogeny
+    - Phylogenetic signal
+]
+
+.pull-right[
+- Trait measures
+    - Phylogenetic middleman problem
+    - Functional traits
+    - Rebuilding community ecology from trait
+    - Convex hull (multiple trait)
+    - Single trait patterns
+    - Competitive hierarchy
+]
+
+
+
+```{r , fig.height = 3, fig.width = 6, eval=FALSE, echo = FALSE}
+my_col <-c("#E28F41", "#6C9AC3")
+d <- tibble(xmin = 0, xmax = 1, ymin = 0, ymax = 1)
+
+p1 <- ggplot(d) +
+  geom_rect(aes(xmin = xmin, xmax = xmax, 
+                ymin = ymin, ymax = ymax),
+            fill = my_col[1]) +
+  ggtitle("Community A") +
+  theme_void() +
+  theme(plot.title = element_text(size = 28))
+
+p2 <- ggplot(d) +
+  geom_rect(aes(xmin = xmin, xmax = xmax, 
+                ymin = ymin, ymax = ymax),
+            fill = my_col[2]) +
+  ggtitle("Community B") +
+  theme_void() +
+  theme(plot.title = element_text(size = 28))
+p1 + p2
+```

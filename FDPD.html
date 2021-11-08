@@ -18,6 +18,9 @@
 
 
 
+
+
+
 name:FDPD-title
 class: left, middle
 
@@ -47,98 +50,37 @@ We Learn:
 
 ---
 
-
-# Outline 0
-
-
-.pull-left[
-
-- Community assembly
-
-- Diversity measures
-    - First-Order Properties of Single Communities
-    - First-Order Properties of Multiple Communities
-    - Second-Order Properties with Site Characteristics
-    - Second-Order Properties with Species Traits
-
-- Phylogenetic measures
-    - Genus:species ratio
-    - Phylogenetic diversity
-    - (Functional diversity)
-    - Community phylogeny
-    - Phylogenetic signal
-]
-
-.pull-right[
-- Trait measures
-    - Phylogenetic middleman problem
-    - Functional traits
-    - Rebuilding community ecology from trait
-    - Convex hull (multiple trait)
-    - Single trait patterns
-    - Competitive hierarchy
-]
-
-
----
-
-# Outline
-
-
-.pull-left[
-
-- Community assembly
-
-- Diversity measures
-    - First-Order Properties of Single Communities
-    - First-Order Properties of Multiple Communities
-    - Second-Order Properties with Site Characteristics
-    - Second-Order Properties with Species Traits
-
-- Phylogenetic measures
-    - Genus:species ratio
-    - Phylogenetic diversity
-    - (Functional diversity)
-    - Community phylogeny
-    - Phylogenetic signal
-]
-
-.pull-right[
-- Trait measures
-    - Phylogenetic middleman problem
-    - Functional traits
-    - Rebuilding community ecology from trait
-    - Convex hull (multiple trait)
-    - Single trait patterns
-    - Competitive hierarchy
-]
-
-
----
-
 # Community Assembly and Species Coexistence
 
 For over a century, filed ecologist have been characterizing patterns in ecological communities and trying to draw theoretical inferences form the resulting data.
 
---
+&lt;img src="img/sp_coex.jpg" width="65%" style="display: block; margin: auto;"/&gt;
+
+---
+
+.pull-left[
 
 ## Central Questions:
 
 - Why do species occurs at the particular places?
 
---
-
 - Why do some pairs of species coexist while others not?
 
+]
+
+.pull-right[
+&lt;img src="img/tree_dist.png" width="90%"/&gt;
+]
+
 --
 
+.pull-left[
 ## Predictions:
 
-- **Environmental filtering**: Ecologically similar species should coexist in ecologically similar environments.
+- **Environmental filtering**: .blue[**Ecologically similar**] species should coexist in ecologically similar environments.
 
---
-
-- **Limiting similarity**: Ecologically dissimilar species should coexist because too similar species competing for the same resources cannot stably coexist.
+- **Limiting similarity**: .orange[**Ecologically dissimilar**] species should coexist because too similar species competing for the same resources cannot stably coexist.
+]
 
 ---
 
@@ -151,7 +93,7 @@ class: middle
 name: first-order-single
 class: middle
 
-# How to quantify ecological communities 🍂
+# How to quantify ecological communities 🍃
 
 ---
 
@@ -207,7 +149,7 @@ class: middle
 --
 
 .pull-right[
-&lt;img src="FDPD_files/figure-html/unnamed-chunk-2-1.png" width="504" /&gt;
+&lt;img src="figure/unnamed-chunk-2-1.png" width="504" style="display: block; margin: auto;" /&gt;
 ]
 
 ---
@@ -405,7 +347,7 @@ name: first-order-multi
 --
 
 .pull-right[
-- Dissimilarity matrix
+- Dissimilarity matrix (site `\(\times\)` site)
 
 &lt;table&gt;
  &lt;thead&gt;
@@ -454,7 +396,6 @@ name: first-order-multi
 Bray–Curtis dissimilarity
 
 `\(BC_{ij}=1-2\frac{\sum min\left(S_{A,i}\mbox{, } S_{B,i}\right)}{\sum S_{A,i}+\sum S_{B,i}}\)`
-
 
 Site 1 vs Site 2:  1 - (2 * (0 + 250 + 56 + 18) / (4 +300 + 56 + 23 + 0 + 250 + 120 + 18)) = 0.16
 
@@ -904,14 +845,14 @@ name: second-order-trait2
 
 Photosynthetic rates
 
-&lt;img src="https://www.licor.com/env/products/photosynthesis/LI-6800/images/li6800-hero3.png" width="100%"/&gt;
+&lt;img src="img/li6800-hero3.png" width="100%"/&gt;
 ]
 
 --
 
 .right-column[
 
-&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/BorneoRainforest_DSC_9267.JPG/1200px-BorneoRainforest_DSC_9267.JPG" width="100%"/&gt;
+&lt;img src="img/1200px-BorneoRainforest_DSC_9267.JPG" width="100%"/&gt;
 
 ]
 
@@ -928,17 +869,17 @@ Community with 3 genus and 3 species (3:3) vs community with 1 genus and 3 speci
 
 --
 
-- A high genus:species ratio indicates distantly related and ecologically
+- A .orange[**high**] genus:species ratio indicates distantly related and ecologically
   dissimilar species coexist.
 
-    - Limiting similarity
+  - .orange[**Limiting similarity**]
 
 --
 
-- A low genus:species ratio indicates closely related and ecologically
+- A .blue[**low**] genus:species ratio indicates closely related and ecologically
   similar species coexist.
 
-    - Environmental filtering
+   - .blue[**Environmental filtering**]
 
 ---
 
@@ -953,18 +894,17 @@ Community with 3 genus and 3 species (3:3) vs community with 1 genus and 3 speci
 
 --
 
-- A large criticism of genus:speices ratio analyses is that they do not take
-  acount for the different ages of genera and species
+- A large criticism of genus:species ratio analyses is that they do not take
+  account for the different ages of genera and species
     - Two species in a relatively young genus may be expected to be more similar than two species in a relatively old genus.
-
 
 ---
 
 class:middle, center
 
-# Solution for the genus:spcies ratio problem = Use phylogenetic trees
+# Solution for the genus:species ratio problem = Use phylogenetic trees
 
-&lt;img src="FDPD_files/figure-html/unnamed-chunk-11-1.png" width="504" /&gt;
+&lt;img src="figure/unnamed-chunk-11-1.png" width="504" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -1008,7 +948,7 @@ class:middle, center
 
 .pull-left[
 
-&lt;img src="FDPD_files/figure-html/unnamed-chunk-13-1.png" width="504" /&gt;
+&lt;img src="figure/unnamed-chunk-13-1.png" width="504" style="display: block; margin: auto;" /&gt;
 ]
 
 .pull-right[
@@ -1041,7 +981,7 @@ class:middle, center
 
 .pull-left[
 
-&lt;img src="FDPD_files/figure-html/unnamed-chunk-15-1.png" width="504" /&gt;
+&lt;img src="figure/unnamed-chunk-15-1.png" width="504" style="display: block; margin: auto;" /&gt;
 ]
 
 --
@@ -1058,7 +998,7 @@ class:middle, center
 
 
 .pull-left[
-&lt;img src="FDPD_files/figure-html/unnamed-chunk-17-1.png" width="504" /&gt;
+&lt;img src="figure/unnamed-chunk-17-1.png" width="504" style="display: block; margin: auto;" /&gt;
 ]
 
 --
@@ -1115,7 +1055,7 @@ class:middle, center
 
 .pull-left[
 
-&lt;img src="FDPD_files/figure-html/unnamed-chunk-18-1.png" width="288" /&gt;
+&lt;img src="figure/com-phylo-1.png" width="288" style="display: block; margin: auto;" /&gt;
 
 ]
 
@@ -1123,16 +1063,45 @@ class:middle, center
 
 .pull-right[
 
-Distance matrix
+**Distance matrix**
 
 
 ```
-##   A B C D E
-## B 1        
-## C 2 2      
-## D 4 4 3    
-## E 5 5 4 2  
-## F 5 5 4 2 1
+    A B C D E
+  B 1        
+  C 2 2      
+  D 4 4 3    
+  E 5 5 4 2  
+  F 5 5 4 2 1
+```
+]
+
+---
+name:mpd0
+
+# Mean Pairwise Distance (MPD) and Net Related Index (NRI)
+
+.footnote[
+[1] `\(MPD = \frac{1}{n} \sum^{n}_{i} \sum^n_j \delta_{i,j} \; i \neq j\)`, where
+`\(\delta_{i, j}\)` is the pairwise distance between species *i* and *j*
+]
+
+Greatest possible mean pairwise node distance for a community of 4 taxa: 22 / 6 pairs = 3.66 (for A, B, E, F)
+
+.pull-left[
+&lt;img src="figure/com-phylo-1.png" width="288" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+**Distance matrix**
+
+```
+    A B C D E
+  B 1        
+  C 2 2      
+  D 4 4 3    
+  E 5 5 4 2  
+  F 5 5 4 2 1
 ```
 ]
 
@@ -1142,11 +1111,11 @@ name:mpd
 # Mean Pairwise Distance (MPD) and Net Related Index (NRI)
 
 .footnote[
-[1] `\(MPD = \frac{1}{n} \Sigma^n_i \Sigma^n_j \delta_{i,j} \; i \neq j\)`, where
-`\(\delta_{i, j}\)` is the pairwised distance between species *i* and *j*
+[1] `\(MPD = \frac{1}{n} \sum^{n}_{i} \sum^n_j \delta_{i,j} \; i \neq j\)`, where
+`\(\delta_{i, j}\)` is the pairwise distance between species *i* and *j*
 ]
 
-Greatest possible mean pairwise node distance for a community of 4 taxa = 22 / 6 pairs = 3.66 (for A, B, E, F)
+Greatest possible mean pairwise node distance for a community of 4 taxa: 22 / 6 pairs = 3.66 (for A, B, E, F)
 
 --
 
@@ -1156,15 +1125,15 @@ Community 1; A, B, C, D
 
 
 ```
-##   A B C
-## B 1    
-## C 2 2  
-## D 4 4 3
+    A B C
+  B 1    
+  C 2 2  
+  D 4 4 3
 ```
 
-Mean pairwise nodal distance (**MPD**) = (1 + 2 + 2 + 4 + 4 + 3) / 6 = 2.66
+**MPD** = (1 + 2 + 2 + 4 + 4 + 3) / 6 = 2.66
 
-Net Related Index (**NRI**) = 1 - (2.66 / 3.66) = 0.273
+**NRI** = 1 - (2.66 / 3.66) = 0.273
 
 ]
 
@@ -1176,18 +1145,48 @@ Community 2; A, B, E, F
 
 
 ```
-##   A B E
-## B 1    
-## E 5 5  
-## F 5 5 1
+    A B E
+  B 1    
+  E 5 5  
+  F 5 5 1
 ```
 
-Mean pairwise nodal distance (**MPD**) = (1 + 5 + 5 + 5 + 5 + 1) / 6 = 3.66
+**MPD** = (1 + 5 + 5 + 5 + 5 + 1) / 6 = 3.66
 
-Net Related Index (**NRI**) = 1 - (3.66 / 3.66) = 0
+**NRI** = 1 - (3.66 / 3.66) = 0
 
 ]
 
+
+---
+
+name:mntd0
+
+# Mean Nearest Nodal Distance (MNTD) and Nearest Taxa Index (NTI)
+
+.footnote[
+[1] `\(MNTD = \frac{1}{n} \sum^n_i min \delta_{i,j} \; i \neq j\)`, where `\(min \delta_{i, j}\)` is the minimum distance between species *i* and all other species in the community.
+]
+
+Greatest possible nearest nodal distance for a community of 4 taxa = 2 (for A, C, D, F)
+(A to C = 2, C to A = 2, D to F = 2, F to D = 2)
+
+.pull-left[
+&lt;img src="figure/com-phylo-1.png" width="288" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+**Distance matrix**
+
+```
+    A B C D E
+  B 1        
+  C 2 2      
+  D 4 4 3    
+  E 5 5 4 2  
+  F 5 5 4 2 1
+```
+]
 
 ---
 name:mntd
@@ -1195,31 +1194,28 @@ name:mntd
 # Mean Nearest Nodal Distance (MNTD) and Nearest Taxa Index (NTI)
 
 .footnote[
-[1] `\(MNTD = \frac{1}{n} \Sigma^n_i min \delta_{i,j} \; i \neq j\)`, where `\(min \delta_{i, j}\)` is the minimum distance between species *i* and all other species in the community.
+[1] `\(MNTD = \frac{1}{n} \sum^n_i min \delta_{i,j} \; i \neq j\)`, where `\(min \delta_{i, j}\)` is the minimum distance between species *i* and all other species in the community.
 ]
 
-Greatest possible nearest nodel distance for a community of 4 taxa = 2 (for A, C, D, F)
-
-(A to C = 2, C to A = 2, E to F = 2, F to E = 2)
+Greatest possible nearest nodal distance for a community of 4 taxa = 2 (for A, C, D, F)
+(A to C = 2, C to A = 2, D to F = 2, F to D = 2)
 
 
 
 .pull-left[
-
 Community 1; A, B, C, D
 
 
 ```
-##   A B C
-## B 1    
-## C 2 2  
-## D 4 4 3
+    A B C
+  B 1    
+  C 2 2  
+  D 4 4 3
 ```
 
-Mean nearest nodal distance (**MNTD**) = (1 + 1 + 2 + 3) / 4 = 1.75
+**MNTD** = (1 + 1 + 2 + 3) / 4 = 1.75
 
-Nearest Taxa Index (**NTI**) = 1 - (1.75 / 2.0) = 0.125
-
+**NTI** = 1 - (1.75 / 2.0) = 0.125
 ]
 
 --
@@ -1230,15 +1226,15 @@ Community 2; A, B, E, F
 
 
 ```
-##   A B E
-## B 1    
-## E 5 5  
-## F 5 5 1
+    A B E
+  B 1    
+  E 5 5  
+  F 5 5 1
 ```
 
-Mean nearest nodal distance (**MNTD**) = (1 + 1 + 1 + 1) / 4 = 1
+**MNTD** = (1 + 1 + 1 + 1) / 4 = 1
 
-Nearest Taxa Index (**NTI**) = 1 - (1 / 2.0) = 0.5
+**NTI** = 1 - (1 / 2.0) = 0.5
 
 ]
 
@@ -1660,6 +1656,43 @@ Competitive effect of species A on species B will increase with increasing `\(t_
 - How to calculate trait and phylogenetic diversity?
 
   - I hope you remember it!
+
+---
+
+# What we learned today
+
+
+.pull-left[
+
+- Community assembly
+
+- Diversity measures
+    - First-Order Properties of Single Communities
+    - First-Order Properties of Multiple Communities
+    - Second-Order Properties with Site Characteristics
+    - Second-Order Properties with Species Traits
+
+- Phylogenetic measures
+    - Genus:species ratio
+    - Phylogenetic diversity
+    - (Functional diversity)
+    - Community phylogeny
+    - Phylogenetic signal
+]
+
+.pull-right[
+- Trait measures
+    - Phylogenetic middleman problem
+    - Functional traits
+    - Rebuilding community ecology from trait
+    - Convex hull (multiple trait)
+    - Single trait patterns
+    - Competitive hierarchy
+]
+
+
+
+
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

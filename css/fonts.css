@@ -8,3 +8,8 @@ body {
 h1, h4 { font-family: 'Helvetica'; }
 h2, h3 { font-family: 'Helvetica'; }
 .remark-code, .remark-inline-code { font-family: 'Cousine', monospace; font-size: 60%;}
+
+pre {
+  font-size: 40px
+}
+
