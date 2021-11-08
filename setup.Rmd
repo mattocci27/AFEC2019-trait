@@ -10,6 +10,7 @@ library(kableExtra)
 library(picante)
 library(entropart)
 library(patchwork)
+library(gganimate)
 ```
 
 ```{r setup-options}
