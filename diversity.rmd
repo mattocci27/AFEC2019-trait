@@ -30,7 +30,7 @@ htmltools::tagList(rmarkdown::html_dependency_font_awesome())
 <a href="https://github.com/mattocci27/"><i class="fa fa-github fa-1x"></i> Github</a>
 <a href="mailto:mattocci27@gmail.com"><i class="fa fa-envelope fa-1x"></i> Email</a>
 
-Course materials for 2020-11-2 AFEC at XTBG.
+Course materials for 2021-11-9 AFEC at XTBG.
 
 # Prerequisites
 
@@ -49,7 +49,8 @@ install.packages("rmarkdown")
 install.packages("DT")
 ```
 
-Load pacakges.
+Load packages.
+
 ```{r}
 library(picante)
 library(FD)
@@ -108,14 +109,16 @@ trait <- read_csv("./data/dummy_trait.csv")
 DT::datatable(trait)
 ```
 
-## Check the histograms of trait values first
+## Check how traits look like first
 
 ```{r}
 
-trait_long <- trait %>%
-  gather(trait, val, 2:9)
+trait_long <- trait |>
+  pivot_longer(LMA:SM, names_to = "trait")
 
-ggplot(trait_long, aes(x = val)) +
+trait_long
+
+ggplot(trait_long, aes(x = value)) +
   geom_histogram(position = "identity") +
   facet_wrap(~ trait, scale = "free")
 
@@ -126,14 +129,14 @@ Probably we can do log-transformation for all the traits except for WD.
 
 ```{r}
 
-trait2 <- trait %>%
+trait2 <- trait |>
   mutate(logLMA = log(LMA),
          logLL = log(LL),
          logAmass = log(Amass),
          logRmass = log(Rmass),
          logNmass = log(Nmass),
          logPmass = log(Pmass),
-         logSM = log(SM)) %>%
+         logSM = log(SM)) |>
   dplyr::select(sp, logLMA, logLL, logAmass, logRmass, logNmass, logPmass, WD, logSM)
 
 DT::datatable(trait2)
@@ -142,15 +145,15 @@ DT::datatable(trait2)
 
 ```{r}
 
-trait2 %>%
-  gather(trait, val, 2:9) %>%
-  ggplot(., aes(x = val)) +
+trait2 |>
+  pivot_longer(logLMA:logSM, names_to = "trait") |>
+  ggplot(aes(x = value)) +
   geom_histogram(position = "identity") +
   facet_wrap(~ trait, scale = "free")
 
 ```
 
-# Fisrt-order metrics (without phylogeny or traits)
+# First-order metrics (without phylogeny or traits)
 
 ## Species richness, Beta diversity metrics
 
@@ -166,13 +169,13 @@ plot(res_mds)
 
 ```
 
-We can use the function ordiplot and orditorp to add text to the plot in place of points to make some more sence.
+We can use the function ordiplot and orditorp to add text to the plot in place of points to make some more sense.
 
 ```{r}
 
 ordiplot(res_mds, type = "n")
-orditorp(res_mds,display="species",col="red",air=0.01)
-orditorp(res_mds,display="sites",cex=1.25,air=0.01)
+orditorp(res_mds, display = "species", col = "red", air = 0.01)
+orditorp(res_mds, display = "sites", cex = 1.25, air = 0.01)
 
 ```
 
@@ -245,8 +248,8 @@ CWM_i = \frac{\sum_{j=1}^n a_{ij} \times t_{j}}{\sum_{j=1}^n a_{ij}}
 $$
 
 ```{r}
-tmp <- trait2 %>%
-  filter(sp %in% colnames(samp_mat)) 
+tmp <- trait2 |>
+  filter(sp %in% colnames(samp_mat))
 
 tmp
 
