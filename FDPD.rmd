@@ -1452,4 +1452,3 @@ Competitive effect of species A on species B will increase with increasing $t_A 
     - Competitive hierarchy
 ]
 
-

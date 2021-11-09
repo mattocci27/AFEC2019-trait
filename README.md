@@ -4,7 +4,7 @@
 
 Slides and materials for 2021-11-10 AFEC at XTBG.
 
-View the accompanying slides [here](https://forest-canopy.github.io/assets/PDFD/FDPD.html#1) and course materials [here](https://forest-canopy.github.io/assets/PDFD/diversity.html)
+View the accompanying slides [here](https://forest-canopy.github.io/assets/PDFD/FDPD.html) and course materials [here](https://forest-canopy.github.io/assets/PDFD/diversity.html)
 
 # This slide is mainly based on:
 
