@@ -20,7 +20,7 @@ output:
 ```{r global_options, include=FALSE}
 knitr::opts_chunk$set(echo=TRUE,
                       warning=FALSE,
-                      cache=FALSE,
+                      cache=TRUE,
                       message=FALSE)
 
 htmltools::tagList(rmarkdown::html_dependency_font_awesome())
@@ -102,7 +102,7 @@ plot(phylo)
 
 ```{r}
 
-trait <- read_csv("./data/dummy_trait.csv") 
+trait <- read_csv("./data/dummy_trait.csv")
 
 # trait <- read.csv("./data/dummy_trait.csv") is fine too.
 
