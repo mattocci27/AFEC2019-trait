@@ -1,7 +1,7 @@
 ---
 title: Functional diversity and phylogenetic diversity
 author: Masatoshi Katabuchi
-date: "2021/11/9"
+date: "2021/11/10"
 output:
  xaringan::moon_reader:
     css: ["./css/default.css", "./css/fdpd.css", "./css/fonts.css"]
@@ -29,7 +29,7 @@ class: left, middle
 <img src="https://cdn-images-1.medium.com/max/800/1*3O597Dv2NGbNzg_dWRu2Hw.png"
 alt="phylo" width="180" />
 
-Masatoshi Katabuchi | katabuchi@xtbg.ac.cn | AFEC-X 2021::XTBG | 2021-11-9
+Masatoshi Katabuchi | katabuchi@xtbg.ac.cn | AFEC-X 2021::XTBG | 2021-11-10
 
 <!-- this ends up being the title slide since seal = FALSE-->
 
