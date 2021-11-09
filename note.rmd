@@ -1,6 +1,22 @@
 # Species coexitence
 
 
+```{r}
+samp <- read_csv("./data/samp.csv")
+
+samp_mat <- as.matrix(samp[, -1])
+rownames(samp_mat) <- samp$Site
+
+samp_mat
+
+samp |>
+  pivot_longer(2:9, names_to = "Species", values_to = "abund") |>
+  write_csv("data/samp.csv")
+  
+
+```
+
+
 
 
 .footnote[

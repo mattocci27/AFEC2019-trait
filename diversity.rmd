@@ -32,6 +32,11 @@ htmltools::tagList(rmarkdown::html_dependency_font_awesome())
 
 Course materials for 2021-11-9 AFEC at XTBG.
 
+# Objectives
+
+- prepare species $\times$ site matrix and trait data from csv files.
+- calculate diversity indices.
+
 # Prerequisites
 
 Did you install `picante` and `FD`?
@@ -58,24 +63,28 @@ library(tidyverse)
 library(rmarkdown)
 ```
 
-
 # Data
 
 ## Community
 
 ```{r}
-
-samp <- read_csv("./data/samp.csv")
-
-DT::datatable(samp)
-
-samp_mat <- as.matrix(samp[, -1])
-rownames(samp_mat) <- samp$Site
-
-samp_mat
-
+d <- read_csv("data/samp.csv")
+d
+DT::datatable(d)
 ```
 
+First, we want to make a species $\times$ site matrix.
+`tapply` is an useful function here.
+
+```{r}
+tapply(d$abund, d$Species, sum)
+```
+
+```{r}
+samp <- tapply(d$abund, list(d$Site, d$Species), sum)
+samp
+class(samp)
+```
 
 ## Phylogeny
 
@@ -84,7 +93,6 @@ samp_mat
 phylo <- read.tree("./data/dummy_tree.newick")
 plot(phylo)
 ```
-
 
 
 ## Traits
@@ -155,15 +163,41 @@ trait2 |>
 
 # First-order metrics (without phylogeny or traits)
 
-## Species richness, Beta diversity metrics
+## Species richness
 
-Skip
+```{r}
+samp > 0
+apply(samp > 0, 1, sum)
+```
+
+## Shannon
+
+$H' = - \sum_i^n p_i\mathrm{log}p_i$, where $p_i$ is the relative abundance for
+species *i*.
+
+```{r}
+shannon <- function(abund) {
+ p0 <- abund / sum(abund)
+ p <- p0[p0 > 0]
+ -sum(p * log(p))
+}
+```
+
+```{r}
+apply(samp, 1, shannon)
+```
+
+You don't have to reinvent the wheel.
+
+```{r}
+vegan::diversity(samp, index = "shannon")
+```
 
 ## Nonmetric Multidimensional Scaling (NMDS)
 
 ```{r}
 
-res_mds <- metaMDS(samp_mat)
+res_mds <- metaMDS(samp)
 
 plot(res_mds)
 
@@ -187,7 +221,7 @@ orditorp(res_mds, display = "sites", cex = 1.25, air = 0.01)
 
 ```{r}
 
-res_pd <- pd(samp_mat, phylo)
+res_pd <- pd(samp, phylo)
 
 res_pd
 
@@ -217,7 +251,7 @@ $\delta_{i, j}$ is the pairwised distance between species *i* and *j*
 
 ```{r}
 
-res_mpd <- mpd(samp_mat, cophenetic(phylo))
+res_mpd <- mpd(samp, cophenetic(phylo))
 
 res_mpd
 
@@ -231,7 +265,7 @@ $MNTD = \frac{1}{n} \Sigma^n_i min \delta_{i,j} \; i \neq j$, where $min \delta_
 
 ```{r}
 
-res_mntd <- mntd(samp_mat, cophenetic(phylo))
+res_mntd <- mntd(samp, cophenetic(phylo))
 
 res_mntd
 
@@ -249,13 +283,13 @@ $$
 
 ```{r}
 tmp <- trait2 |>
-  filter(sp %in% colnames(samp_mat))
+  filter(sp %in% colnames(samp))
 
 tmp
 
-(ab <- apply(samp_mat, 1, sum))
+(ab <- apply(samp, 1, sum))
 # inner product
-(CWS <- samp_mat %*% as.matrix(tmp[,-1]))
+(CWS <- samp %*% as.matrix(tmp[,-1]))
 ```
 ```{r}
 (CWM <- CWS / ab)
@@ -316,9 +350,9 @@ trait_dm[1:5, 1:5]
 ### MPD
 
 ```{r}
-mpd(samp_mat, trait_dm)
+mpd(samp, trait_dm)
 
-ses.mpd(samp_mat, trait_dm)
+ses.mpd(samp, trait_dm)
 
 ```
 
@@ -327,7 +361,7 @@ ses.mpd(samp_mat, trait_dm)
 ### MNTD
 
 ```{r}
-mntd(samp_mat, trait_dm)
+mntd(samp, trait_dm)
 ```
 
 ## Branch length based metric
@@ -350,7 +384,7 @@ plot(t_clust)
 
 ```{r, eval = TRUE}
 
-res_fd <- dbFD(trait_mat[colnames(samp_mat), ], samp_mat)
+res_fd <- dbFD(trait_mat[colnames(samp), ], samp)
 
 res_fd
 
