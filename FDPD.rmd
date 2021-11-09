@@ -58,6 +58,10 @@ For over a century, filed ecologist have been characterizing patterns in ecologi
 
 ---
 
+.footnote[
+Russo, Sabrina E., Stuart J. Davies, David A. King, and Sylvester Tan. “Soil-Related Performance Variation and Distributions of Tree Species in a Bornean Rain Forest.” Journal of Ecology 93, no. 5 (2005): 879–89.
+]
+
 .pull-left[
 
 ## Central Questions:
@@ -141,6 +145,7 @@ ggplot(ab1 |> as.data.frame(), aes(x = rank(-ab1), y = ab1)) +
 ]
 
 ---
+
 ## 1a) First-order properties of single communities
 
 Which community is more diverse?
@@ -150,7 +155,7 @@ Which community is more diverse?
 --
 
 .pull-left[
-- Species richness = 10 
+- Species richness = 2
 
 - What is the chance to get the same species?
 
@@ -282,7 +287,6 @@ name: first-order-multi
 [1] Vellend, M. (2016). The Theory of Ecological Communities. Princeton University Press
 ]
 
---
 
 .pull-left[
 
